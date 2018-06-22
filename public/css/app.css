@@ -13466,9 +13466,101 @@ a.text-dark:focus {
   }
 }
 
+div {
+  outline: none;
+}
+
+/*Frontend*/
+
 .navbar-laravel {
   background-color: #fff;
   -webkit-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
           box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
 }
+
+/* End Frontend */
+
+/* Backend */
+
+body {
+  overflow-x: hidden;
+}
+
+.splash {
+  display: block;
+  position: fixed;
+  z-index: 2000;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 5%;
+  background-color: #203A45;
+}
+
+.backend-top-navbar {
+  padding: 0 !important;
+  padding-top: 3.5rem !important;
+  padding-bottom: 1rem !important;
+  padding-left: 2rem !important;
+  padding-right: 2rem !important;
+  background-color: #203A45;
+}
+
+.backend-top-navbar > a {
+  color: white !important;
+}
+
+.backend-top-navbar-child > li > a {
+  color: white !important;
+}
+
+.backend-top-navbar-dropdown {
+  margin: 0 !important;
+  margin-top: 0.6rem !important;
+}
+
+.backend-top-navbar-menubars_icon {
+  font-size: 1.5rem;
+  color: white;
+}
+
+.page-header {
+  background: #203A45;
+  padding: 15px 0 35px 0;
+  border-bottom-width: 5px;
+  border-bottom-style: solid;
+  border-bottom-color: #008B8B;
+}
+
+.page-header-title {
+  color: white;
+  font-weight: 500;
+}
+
+.page-header-breadcrumb {
+  background-color: transparent !important;
+  padding: 0;
+}
+
+.page-header-breadcrumb-item {
+  color: white;
+}
+
+.page-header-breadcrumb-item-active {
+  color: salmon !important;
+  font-weight: 500;
+}
+
+.page-header-input-search {
+  background-color: rgba(32, 178, 170, 0.2) !important;
+  color: white !important;
+  border-radius: 0.1rem !important;
+  border: none;
+}
+
+.page-header-input-search::-webkit-input-placeholder {
+  color: snow !important;
+}
+
+/* End Backend */
 

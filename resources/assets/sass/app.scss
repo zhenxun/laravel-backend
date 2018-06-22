@@ -3,17 +3,35 @@
 @import url("https://fonts.googleapis.com/css?family=Raleway:300,400,600");
 
 //Font Awesome
-@import "~font-awesome/scss/font-awesome.scss";
+@import "~font-awesome/scss/font-awesome";
 
 // Variables
 @import "variables";
+// Mixin
+@import "mixin";
 
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
 
+div{
+  @include div-outline;
+}
 
 
+/*Frontend*/
 .navbar-laravel {
   background-color: #fff;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
 }
+/* End Frontend */
+
+
+/* Backend */
+body{
+  overflow-x:hidden; 
+}
+@import "backend/splash";
+@import "backend/top-navbar";
+@import "backend/header";
+
+/* End Backend */

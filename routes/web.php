@@ -14,3 +14,9 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::group(['prefix' => 'backend', 'namespace' => 'Backend', 'as' => 'admin.'], function(){
+
+    Route::get('/', 'DashboardController@index')->name('dashboard');
+
+});

@@ -1,0 +1,39 @@
+.page-header{
+  background: #203A45;
+  padding: 15px 0 35px 0;
+  border-bottom-width:5px;
+  border-bottom-style:solid;
+  border-bottom-color:#008B8B;
+
+  &-title{
+    color: white;
+    font-weight: 500;
+  }
+
+  &-breadcrumb{
+
+    background-color: transparent !important;
+    padding: 0;
+
+    &-item{
+       color:white;
+
+       &-active{
+         color: salmon !important;
+         font-weight: 500;
+       }
+    }
+
+  }
+
+  &-input-search{
+    background-color: rgba(#20B2AA, 0.2) !important;
+    color: white !important;
+    border-radius: 0.1rem !important;
+    border: none;
+  }
+
+  &-input-search::-webkit-input-placeholder{
+    color: snow !important;
+  }
+}

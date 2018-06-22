@@ -1,0 +1,12 @@
+
+$show-div-outline:false !default;
+
+@mixin div-outline{
+
+  @if $show-div-outline{
+    outline: 2px dotted yellowgreen;
+  }@else{
+    outline: none;
+  }
+
+}
