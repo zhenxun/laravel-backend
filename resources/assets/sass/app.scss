@@ -14,7 +14,10 @@
 @import '~bootstrap/scss/bootstrap';
 
 div{
-  @include div-outline;
+  @include outline(dotted, yellowgreen);
+}
+section{
+  @include outline(dashed,rgba(241, 97, 97, 0.795));
 }
 
 
@@ -28,10 +31,13 @@ div{
 
 /* Backend */
 body{
-  overflow-x:hidden; 
+  overflow-x:hidden;
 }
 @import "backend/splash";
 @import "backend/top-navbar";
 @import "backend/header";
+@import "backend/footer";
+
+@import "backend/dashboard";
 
 /* End Backend */
