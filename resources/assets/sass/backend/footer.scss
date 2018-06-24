@@ -1,0 +1,19 @@
+.footer {
+  position: relative;
+  bottom: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height: 60px;
+  line-height: 60px; /* Vertically center the text there */
+  background-color: #203A45;
+
+  & > .container{
+  padding-right: 15px;
+  padding-left: 15px;
+  color:white;
+  margin-left: 25px !important;
+  }
+
+}
+
+

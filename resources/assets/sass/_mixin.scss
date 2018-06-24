@@ -1,10 +1,10 @@
 
 $show-div-outline:false !default;
 
-@mixin div-outline{
+@mixin outline($style, $color){
 
   @if $show-div-outline{
-    outline: 2px dotted yellowgreen;
+    outline: 2px $style $color;
   }@else{
     outline: none;
   }

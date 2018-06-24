@@ -13470,6 +13470,10 @@ div {
   outline: none;
 }
 
+section {
+  outline: none;
+}
+
 /*Frontend*/
 
 .navbar-laravel {
@@ -13560,6 +13564,82 @@ body {
 
 .page-header-input-search::-webkit-input-placeholder {
   color: snow !important;
+}
+
+.footer {
+  position: relative;
+  bottom: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height: 60px;
+  line-height: 60px;
+  /* Vertically center the text there */
+  background-color: #203A45;
+}
+
+.footer > .container {
+  padding-right: 15px;
+  padding-left: 15px;
+  color: white;
+  margin-left: 25px !important;
+}
+
+.grid-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 150px;
+  height: 150px;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border-radius: 10px;
+  border: 2px solid #cccc;
+  cursor: pointer;
+  -webkit-box-shadow: 0 15px 20px rgba(0, 0, 0, 0.4);
+          box-shadow: 0 15px 20px rgba(0, 0, 0, 0.4);
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+
+.grid-container:hover {
+  background-color: azure;
+}
+
+.grid-container:active,
+.grid-container:focus {
+  -webkit-transform: translateY(-0.2rem);
+          transform: translateY(-0.2rem);
+}
+
+.grid-container > .icon {
+  display: block;
+}
+
+.grid-container > .icon > span {
+  font-size: 1rem;
+  color: #424242;
+}
+
+.grid-container > .title {
+  display: block;
+}
+
+.grid-container > .title > a {
+  letter-spacing: 2px;
+  font-size: 16px;
+  color: black !important;
 }
 
 /* End Backend */
