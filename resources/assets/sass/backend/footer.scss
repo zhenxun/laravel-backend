@@ -1,5 +1,5 @@
 .footer {
-  position: relative;
+  position:relative;
   bottom: 0;
   width: 100%;
   /* Set the fixed height of the footer here */
@@ -11,9 +11,12 @@
   padding-right: 15px;
   padding-left: 15px;
   color:white;
+  margin-left: 25px !important;
 
   & > span{
-    padding-left: 2.5rem !important;
+    @include media-breakpoint-down(sm){
+      margin-left: auto !important;
+    }
   }
  
   }

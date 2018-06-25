@@ -18,5 +18,6 @@ Route::get('/', function () {
 Route::group(['prefix' => 'backend', 'namespace' => 'Backend', 'as' => 'admin.'], function(){
 
     Route::get('/', 'DashboardController@index')->name('dashboard');
+    Route::resource('news', 'NewsController');
 
 });

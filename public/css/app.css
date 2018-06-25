@@ -1,4 +1,4 @@
-@import url(https://fonts.googleapis.com/css?family=Raleway:300,400,600);@charset "UTF-8";
+@import url(https://fonts.googleapis.com/earlyaccess/cwtexyen.css);@import url(https://fonts.googleapis.com/css?family=Raleway:300,400,600);@charset "UTF-8";
 
 /*!
  *  Font Awesome 4.7.0 by @davegandy - http://fontawesome.io - @fontawesome
@@ -3051,6 +3051,65 @@
   margin: 0;
   overflow: visible;
   clip: auto;
+}
+
+.form-div {
+  background-color: white;
+  border: 1px solid white;
+  border-radius: 10px;
+  border-top: 4px solid yellowgreen !important;
+}
+
+.form-header-box > ul {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  list-style: none;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+}
+
+.form-header-box > ul > li:not(:last-child) {
+  margin-right: 1.5rem;
+}
+
+.form-header-box > ul > li > a {
+  color: black !important;
+  text-decoration: none !important;
+  letter-spacing: 3px;
+  font-size: 1.1rem !important;
+}
+
+.form-header-box > ul > li > a:hover {
+  color: #9ACD32 !important;
+}
+
+.form-header-box-save {
+  background: none !important;
+  border: none !important;
+  cursor: pointer;
+  letter-spacing: 3px;
+  font-size: 1.1rem !important;
+}
+
+.form-header-box-save:hover {
+  color: #9ACD32 !important;
+}
+
+.index-header-box > a {
+  color: black !important;
+  text-decoration: none !important;
+  letter-spacing: 3px;
+  font-size: 1.1rem !important;
+}
+
+.index-header-box > a:hover {
+  color: #9ACD32 !important;
 }
 
 /*!
@@ -13487,7 +13546,9 @@ section {
 /* Backend */
 
 body {
+  font-family: 'cwTeXYen', sans-serif !important;
   overflow-x: hidden;
+  background-color: #DCDCDC;
 }
 
 .splash {
@@ -13606,10 +13667,20 @@ body {
   padding-right: 15px;
   padding-left: 15px;
   color: white;
+  margin-left: 25px !important;
 }
 
-.footer > .container > span {
-  padding-left: 2.5rem !important;
+@media (max-width: 767.98px) {
+  .footer > .container > span {
+    margin-left: auto !important;
+  }
+}
+
+.action-box > a {
+  letter-spacing: 2px;
+  font-size: 16px;
+  color: black !important;
+  text-decoration: none !important;
 }
 
 .grid-container {
@@ -13670,12 +13741,6 @@ body {
 
 .grid-container > .title {
   display: block;
-}
-
-.grid-container > .title > a {
-  letter-spacing: 2px;
-  font-size: 16px;
-  color: black !important;
 }
 
 @-webkit-keyframes shake {
