@@ -1,3 +1,10 @@
+.action-box > a{
+    letter-spacing: 2px;
+    font-size: 16px;
+    color: black !important;
+    text-decoration: none !important;
+}
+
 .grid-container{
     display: flex;
     width:150px;
@@ -35,12 +42,6 @@
 
     & > .title{
         display: block;
-
-        & > a{
-            letter-spacing: 2px;
-            font-size: 16px;
-            color: black !important;
-        }
 
     }
 

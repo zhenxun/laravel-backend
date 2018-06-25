@@ -7,6 +7,7 @@
 
             @component('layouts.backend.components.action_box')
                 @slot('icon') fa-paper-plane @endslot
+                @slot('url') {{ route('admin.news.index') }} @endslot
                 最新消息
             @endcomponent
 

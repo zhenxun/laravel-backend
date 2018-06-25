@@ -1,5 +1,6 @@
 
 // Fonts
+@import url(https://fonts.googleapis.com/earlyaccess/cwtexyen.css);
 @import url("https://fonts.googleapis.com/css?family=Raleway:300,400,600");
 
 //Font Awesome
@@ -9,6 +10,8 @@
 @import "variables";
 // Mixin
 @import "mixin";
+//common
+@import "common";
 
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
@@ -31,7 +34,9 @@ section{
 
 /* Backend */
 body{
+  font-family: 'cwTeXYen', sans-serif !important;
   overflow-x:hidden;
+  background-color:#DCDCDC;
 }
 @import "backend/splash";
 @import "backend/top-navbar";
