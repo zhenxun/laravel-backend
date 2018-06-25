@@ -1,3 +1,13 @@
+.container{
+
+    & > .row{
+      @include media-breakpoint-down(sm){
+        padding-left:5px;
+        padding-right:5px;
+      }
+    }
+}
+
 .form-div{
   background-color: white;
   border:1px solid white;
@@ -7,11 +17,21 @@
 
 .form-header-box{
 
+  @include media-breakpoint-down(sm){
+    padding-right: 0 !important;
+    padding-left: 0 !important;
+  }
+
+
   & > ul{
     display: flex;
     list-style: none;
     flex-direction: row;
     justify-content: flex-end;
+
+    @include media-breakpoint-down(sm){
+        padding-left:0 !important;
+    }
 
     & > li:not(:last-child){
       margin-right: 1.5rem;
@@ -36,10 +56,34 @@
     cursor: pointer;
     letter-spacing: 3px;
     font-size: 1.1rem !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
   }
 
   &-save:hover{
     color: #9ACD32 !important;
+  }
+
+  &-save:active, &-save:focus{
+    outline: none !important;
+  }
+
+  &-attachment{
+    background: none !important;
+    border: none !important;
+    cursor: pointer;
+    letter-spacing: 3px;
+    font-size: 1.1rem !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;    
+  }
+
+  &-attachment:hover{
+    color: #9ACD32 !important;
+  }
+
+  &-attachment:active, &-attachment:focus{
+    outline: none !important;
   }
 
 }

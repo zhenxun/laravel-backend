@@ -1,12 +1,12 @@
 <div class="col-12 text-right form-header-box">
   <ul>
     <li>
-        <button type="submit" class="form-header-box-save"> <i class="fa fa-save"></i> 附件 </button>
+        <button type="submit" class="form-header-box-save"> <i class="fa fa-save"></i> 儲存 </button>
     </li>
     <li>
-        <a href="{{ $attachment }}">
+        <button type="button" class="form-header-box-attachment" data-toggle="modal" data-target=".bd-example-modal-lg">
             <i class="fa fa-paperclip"></i> 附件
-        </a>
+        </button>
     </li>
     <li>
         <a href="{{ $back }}">
