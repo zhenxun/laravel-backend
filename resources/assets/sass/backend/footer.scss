@@ -11,7 +11,11 @@
   padding-right: 15px;
   padding-left: 15px;
   color:white;
-  margin-left: 25px !important;
+
+  & > span{
+    padding-left: 2.5rem !important;
+  }
+ 
   }
 
 }

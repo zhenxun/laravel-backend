@@ -5,15 +5,36 @@
   border-bottom-style:solid;
   border-bottom-color:#008B8B;
 
+  &-row{
+    flex-wrap: nowrap;
+
+    @include media-breakpoint-down(sm){
+
+      flex-wrap: wrap;
+
+      & > div {
+        @include make-col(12);
+      }
+
+      & > div:nth-child(2){
+        padding-left: 2.5rem !important;
+      }
+
+    }
+
+  }
+
   &-title{
     color: white;
     font-weight: 500;
+    margin-left: 1.4rem;
   }
 
   &-breadcrumb{
 
     background-color: transparent !important;
     padding: 0;
+    margin-left: 1.4rem;
 
     &-item{
        color:white;
