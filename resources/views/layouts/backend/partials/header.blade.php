@@ -1,7 +1,7 @@
 <header class="page-header">
   <div class="container-fluid">
-    <div class="row flex-nowrap">
-        <div class="col-8 ml-4">
+    <div class="row page-header-row">
+        <div class="col-8">
             <h1 class="page-header-title">Dashboard</h1>
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb page-header-breadcrumb">

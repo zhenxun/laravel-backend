@@ -13536,14 +13536,39 @@ body {
   border-bottom-color: #008B8B;
 }
 
+.page-header-row {
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+}
+
+@media (max-width: 767.98px) {
+  .page-header-row {
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+  }
+
+  .page-header-row > div {
+    -webkit-box-flex: 0;
+        -ms-flex: 0 0 100%;
+            flex: 0 0 100%;
+    max-width: 100%;
+  }
+
+  .page-header-row > div:nth-child(2) {
+    padding-left: 2.5rem !important;
+  }
+}
+
 .page-header-title {
   color: white;
   font-weight: 500;
+  margin-left: 1.4rem;
 }
 
 .page-header-breadcrumb {
   background-color: transparent !important;
   padding: 0;
+  margin-left: 1.4rem;
 }
 
 .page-header-breadcrumb-item {
@@ -13581,7 +13606,10 @@ body {
   padding-right: 15px;
   padding-left: 15px;
   color: white;
-  margin-left: 25px !important;
+}
+
+.footer > .container > span {
+  padding-left: 2.5rem !important;
 }
 
 .grid-container {
@@ -13615,6 +13643,14 @@ body {
 
 .grid-container:hover {
   background-color: azure;
+  -webkit-animation: shake 0.82s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+          animation: shake 0.82s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+  -webkit-transform: translate3d(0, 0, 0);
+          transform: translate3d(0, 0, 0);
+  -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
+  -webkit-perspective: 1000px;
+          perspective: 1000px;
 }
 
 .grid-container:active,
@@ -13640,6 +13676,50 @@ body {
   letter-spacing: 2px;
   font-size: 16px;
   color: black !important;
+}
+
+@-webkit-keyframes shake {
+  10%, 90% {
+    -webkit-transform: translate3d(-1px, 0, 0);
+            transform: translate3d(-1px, 0, 0);
+  }
+
+  20%, 80% {
+    -webkit-transform: translate3d(2px, 0, 0);
+            transform: translate3d(2px, 0, 0);
+  }
+
+  30%, 50%, 70% {
+    -webkit-transform: translate3d(-4px, 0, 0);
+            transform: translate3d(-4px, 0, 0);
+  }
+
+  40%, 60% {
+    -webkit-transform: translate3d(4px, 0, 0);
+            transform: translate3d(4px, 0, 0);
+  }
+}
+
+@keyframes shake {
+  10%, 90% {
+    -webkit-transform: translate3d(-1px, 0, 0);
+            transform: translate3d(-1px, 0, 0);
+  }
+
+  20%, 80% {
+    -webkit-transform: translate3d(2px, 0, 0);
+            transform: translate3d(2px, 0, 0);
+  }
+
+  30%, 50%, 70% {
+    -webkit-transform: translate3d(-4px, 0, 0);
+            transform: translate3d(-4px, 0, 0);
+  }
+
+  40%, 60% {
+    -webkit-transform: translate3d(4px, 0, 0);
+            transform: translate3d(4px, 0, 0);
+  }
 }
 
 /* End Backend */
