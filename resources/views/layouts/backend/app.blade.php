@@ -27,6 +27,7 @@
       
       <script src="{{ asset('js/app.js') }}"></script>
       <script src="{{ asset('js/init-summernote.js') }}"></script>
+      <script src="{{ asset('js/init-modal.js') }}"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/summernote-bs4.js"></script>
   </body>
 </html>

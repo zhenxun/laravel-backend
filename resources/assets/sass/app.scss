@@ -6,6 +6,9 @@
 //Font Awesome
 @import "~font-awesome/scss/font-awesome";
 
+// Bootstrap
+@import '~bootstrap/scss/bootstrap';
+
 // Variables
 @import "variables";
 // Mixin
@@ -13,8 +16,7 @@
 //common
 @import "common";
 
-// Bootstrap
-@import '~bootstrap/scss/bootstrap';
+
 
 div{
   @include outline(dotted, yellowgreen);
@@ -35,7 +37,7 @@ section{
 /* Backend */
 body{
   font-family: 'cwTeXYen', sans-serif !important;
-  overflow-x:hidden;
+  //overflow-x:hidden;
   background-color:#DCDCDC;
 }
 @import "backend/splash";
