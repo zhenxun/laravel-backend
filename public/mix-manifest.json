@@ -2,5 +2,6 @@
     "/js/app.js": "/js/app.js",
     "/css/app.css": "/css/app.css",
     "/js/init-summernote.js": "/js/init-summernote.js",
-    "/js/init-modal.js": "/js/init-modal.js"
+    "/js/init-modal.js": "/js/init-modal.js",
+    "/js/init-attachments.js": "/js/init-attachments.js"
 }

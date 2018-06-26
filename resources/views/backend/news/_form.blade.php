@@ -24,8 +24,24 @@
 {{ Form::close() }}
 
 @component('layouts.backend.components.modal')
-    @slot('title') Sample Modal @endslot
-    @slot('close') Close @endslot
-    @slot('save') Save @endslot    
-    123
+    {{ Form::open(array('route' => 'admin.attachments.store', 'files' => true)) }}
+    <div class="modal-header">
+      <h5 class="modal-title" id="exampleModalLabel">附件上傳</h5>
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      {{ Form::file('file', ['class' => 'form-control']) }}
+      <hr>
+      <input type="text" class="current_page" value="1">
+      <div class="d-flex flex-row flex-wrap attachments-viewer">
+      </div>
+      <div class="pagination-bar"></div>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-secondary" data-dismiss="modal">關閉</button>
+      <button type="submit" class="btn btn-primary">儲存</button>
+    </div>
+    {{ Form::close() }}
 @endcomponent

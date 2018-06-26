@@ -13571,6 +13571,32 @@ a.text-dark:focus {
   color: #9ACD32 !important;
 }
 
+.files-attachment-link {
+  text-decoration: none !important;
+  color: black;
+}
+
+.files-attachment-box {
+  width: 250px;
+  cursor: pointer;
+}
+
+.files-attachment-box:hover {
+  background-color: beige;
+}
+
+.files-attachment-box-image {
+  width: 100px;
+  height: 66px;
+}
+
+.files-attachment-box-image > img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
 div {
   outline: none;
 }
