@@ -18,12 +18,13 @@ class NewsController extends BackendController
     }
 
     public function index(){
-        return view('backend.news.index');
+        return view('backend.news.index', compact('attachments'));
     }
 
     public function create(){
         $route = URL::route('admin.news.store');
-        return view('backend.news.create', compact('route'));
+        $attachments = collect($this->getAllAttachment())->forPage(1,5);
+        return view('backend.news.create', compact('route', 'attachments'));
     }
 
     public function edit($id){
@@ -42,4 +43,6 @@ class NewsController extends BackendController
     public function destroy(){
 
     }
+
+
 }
