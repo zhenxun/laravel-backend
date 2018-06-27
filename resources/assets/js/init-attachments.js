@@ -121,7 +121,11 @@ $(document).ready(function(){
     getAttachments(page);
   }
 
-  initialize();
+  var hasAttachmentView = $('body').find('.attachments-viewer');
+  if(hasAttachmentView.length > 0){
+    initialize();
+  }
+  
 
   $('body').on('click', '.attachment-page-link', function(e){
       e.preventDefault();

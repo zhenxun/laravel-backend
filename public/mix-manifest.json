@@ -3,5 +3,6 @@
     "/css/app.css": "/css/app.css",
     "/js/init-summernote.js": "/js/init-summernote.js",
     "/js/init-modal.js": "/js/init-modal.js",
+    "/js/init-datatables.js": "/js/init-datatables.js",
     "/js/init-attachments.js": "/js/init-attachments.js"
 }

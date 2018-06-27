@@ -13560,14 +13560,14 @@ a.text-dark:focus {
   outline: none !important;
 }
 
-.index-header-box > a {
+.index-header-box > div > div > div > a {
   color: black !important;
   text-decoration: none !important;
   letter-spacing: 3px;
   font-size: 1.1rem !important;
 }
 
-.index-header-box > a:hover {
+.index-header-box > div > div > div > a:hover {
   color: #9ACD32 !important;
 }
 
@@ -13617,6 +13617,29 @@ a.text-dark:focus {
 
 .files-attachment-box-image > .extension_logo {
   width: 60% !important;
+}
+
+.datatable-iteration {
+  width: 8% !important;
+  text-align: center;
+}
+
+@media (max-width: 767.98px) {
+  .datatable-iteration {
+    width: 10%;
+  }
+}
+
+.datatable-editbar {
+  width: 15% !important;
+}
+
+.datatable-editbar > div > div > a {
+  color: black;
+}
+
+.datatable-editbar > div > div > a:hover {
+  color: #9ACD32 !important;
 }
 
 div {
@@ -13803,6 +13826,7 @@ body {
      -moz-user-select: none;
       -ms-user-select: none;
           user-select: none;
+  background-color: white;
 }
 
 .grid-container:hover {
