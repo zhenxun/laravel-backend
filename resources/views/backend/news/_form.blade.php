@@ -24,7 +24,6 @@
 {{ Form::close() }}
 
 @component('layouts.backend.components.modal')
-    {{ Form::open(array('route' => 'admin.attachments.store', 'files' => true)) }}
     <div class="modal-header">
       <h5 class="modal-title" id="exampleModalLabel">附件上傳</h5>
       <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -32,16 +31,19 @@
       </button>
     </div>
     <div class="modal-body">
-      {{ Form::file('file', ['class' => 'form-control']) }}
+      <div class="alert alert-danger attachment-form-alert-box" role="alert"></div>
+      <form class="attachment-form" enctype="multipart/form-data">
+        {{ csrf_field() }}
+        {{ Form::file('file', ['class' => 'form-control']) }}
+      </form>
       <hr>
-      <input type="text" class="current_page" value="1">
+      <input type="hidden" class="current_page" value="1">
       <div class="d-flex flex-row flex-wrap attachments-viewer">
       </div>
       <div class="pagination-bar"></div>
     </div>
     <div class="modal-footer">
-      <button type="button" class="btn btn-secondary" data-dismiss="modal">關閉</button>
-      <button type="submit" class="btn btn-primary">儲存</button>
+      <button type="button" class="btn btn-default" data-dismiss="modal">關閉</button>
+      <button type="button" class="btn btn-primary btn-attachment-save">儲存</button>
     </div>
-    {{ Form::close() }}
 @endcomponent

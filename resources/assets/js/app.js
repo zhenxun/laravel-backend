@@ -6,6 +6,7 @@
  */
 
 require('./bootstrap');
+require('jquery-confirm');
 
 window.Vue = require('vue');
 
