@@ -4,7 +4,7 @@ namespace App\Http\Requests\Backend;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class AttachmentsStoreRequest extends FormRequest
+class NewsUpdateRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -13,7 +13,7 @@ class AttachmentsStoreRequest extends FormRequest
      */
     public function authorize()
     {
-        return true;
+        return false;
     }
 
     /**
@@ -24,14 +24,7 @@ class AttachmentsStoreRequest extends FormRequest
     public function rules()
     {
         return [
-            'file' => 'required|mimes:jpeg,png,gif,pdf,doc,docx,xls,xlsx,ptt,pttx,txt'
-        ];
-    }
-
-    public function messages(){
-        return[
-            'file.required' => '文件不能空白',
-            'file.mimes' => '僅接受以下格式檔案:jpeg,png,gif,pdf,doc,docx,xls,xlsx,ptt,pttx,txt'
+            //
         ];
     }
 }

@@ -60,20 +60,20 @@
 /******/ 	__webpack_require__.p = "/";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 44);
+/******/ 	return __webpack_require__(__webpack_require__.s = 45);
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ 44:
+/***/ 45:
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(45);
+module.exports = __webpack_require__(46);
 
 
 /***/ }),
 
-/***/ 45:
+/***/ 46:
 /***/ (function(module, exports) {
 
 $(document).ready(function () {
@@ -160,7 +160,10 @@ $(document).ready(function () {
     getAttachments(page);
   }
 
-  initialize();
+  var hasAttachmentView = $('body').find('.attachments-viewer');
+  if (hasAttachmentView.length > 0) {
+    initialize();
+  }
 
   $('body').on('click', '.attachment-page-link', function (e) {
     e.preventDefault();
