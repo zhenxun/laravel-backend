@@ -13571,6 +13571,23 @@ a.text-dark:focus {
   color: #9ACD32 !important;
 }
 
+@media (max-width: 767.98px) {
+  .attachments-viewer {
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+  }
+}
+
+.attachment-form-alert-box {
+  display: none;
+}
+
+.attachment-form-alert-box > ol {
+  list-style: none;
+  padding-left: 0 !important;
+}
+
 .files-attachment-link {
   text-decoration: none !important;
   color: black;
@@ -13588,6 +13605,7 @@ a.text-dark:focus {
 .files-attachment-box-image {
   width: 100px;
   height: 66px;
+  text-align: center;
 }
 
 .files-attachment-box-image > img {
@@ -13595,6 +13613,10 @@ a.text-dark:focus {
   height: 100%;
   -o-object-fit: cover;
      object-fit: cover;
+}
+
+.files-attachment-box-image > .extension_logo {
+  width: 60% !important;
 }
 
 div {
