@@ -30,24 +30,57 @@ class AttachmentsController extends BackendController
 
         if($validator->passes())
         {
-            
+            $save_attachments = $this->store_photo($request->file('file'));
+
+            if($save_attachments){
+                return response()->json(['success' => '上傳成功', 'errors' => [], 'failed' => []]);
+            }else{
+                return response()->json(['failed' => '上傳失敗', 'success' => [], 'errors' => []]);
+            }
+
         }
 
-        return response()->json(['errors'=>$validator->errors()->all()]);
+        return response()->json(['errors'=>$validator->errors()->all(),'failed' => [], 'success' => [] ]);
 
     }
 
-    public function destroy($attachment_id){
+    public function destroy($filename){
+
+        $real_path = storage_path('app/public/attachments/'. $filename);
+        $path = 'public/attachments/'. $filename;
+
+        if(file_exists($real_path)){
+            $destroy_attachment = Storage::delete($path);
+        }else{
+            $destroy_attachment = false;
+            $path = 'file no found';
+        }
+
+        
+
+        if($destroy_attachment)
+        {
+            return response()->json(['success' => '檔案刪除成功', 'error' => []]);
+        }else{
+            return response()->json(['success' => [], 'error' => $path]);
+        }
 
     }
 
     public function getArticles(Request $request, $page){
 
-        $attachments = collect($this->getAllAttachment(6))->forPage($page,6);
+        $attachments = collect($this->getAllAttachment(6))->sortByDesc('time')->forPage($page,6);
 
         if($request->ajax()){
             return $attachments->toJson();
         }
         
+    }
+
+    private function store_photo($file){
+
+        $upload = $file->store(self::PATH);
+        $status = ($upload)? true:false;
+        return $status;
     }
 }

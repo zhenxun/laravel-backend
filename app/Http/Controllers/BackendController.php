@@ -22,7 +22,8 @@ class BackendController extends Controller
                 'mime' => Storage::mimeType($file),
                 'url' => Storage::url($file),
                 'total' => count($files_path),
-                'total_page' => ceil(count($files_path)/$per_page), 
+                'total_page' => ceil(count($files_path)/$per_page),
+                'time' => Storage::lastModified($file) 
             );
         }
         
