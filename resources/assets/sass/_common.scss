@@ -90,16 +90,34 @@
 
 .index-header-box{
 
-    & > a{
+    & > div > div > div > a{
       color: black !important;
       text-decoration: none !important;
       letter-spacing: 3px;
       font-size: 1.1rem !important;      
     }
 
-    & > a:hover{
+    & >  div > div > div > a:hover{
       color: #9ACD32 !important;
     }
+}
+
+.attachments-viewer{
+
+  @include media-breakpoint-down(sm){
+    justify-content: center;
+  }
+
+}
+
+.attachment-form-alert-box{
+  display: none;
+
+  & > ol{
+    list-style: none;
+    padding-left: 0 !important;
+  }
+
 }
 
 .files-attachment-link{
@@ -118,6 +136,7 @@
     &-image{
       width:100px;
       height:66px;
+      text-align: center;
 
       & > img{
         width:100%;
@@ -125,5 +144,35 @@
         object-fit: cover;
       }
 
+      & > .extension_logo{
+        width: 60% !important;
+      }
+
     }
+}
+
+.datatable{
+
+  &-iteration{
+    width: 8% !important;
+    text-align: center;
+
+    @include media-breakpoint-down(sm){
+      width: 10%;
+    }
+  }
+
+  &-editbar{
+    width:15% !important;
+
+    & > div > div > a{
+      color: black;
+    }
+
+    & > div > div > a:hover{
+      color: #9ACD32 !important;
+    }
+
+  }
+
 }

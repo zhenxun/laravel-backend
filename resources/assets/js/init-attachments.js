@@ -1,23 +1,22 @@
 $(document).ready(function(){
 
 
-  function getArticles(page){
+  function getAttachments(page){
 
       $.ajax({
           url : '/backend/api/attachments/' + page
       }).done(function (data) {
         var obj = jQuery.parseJSON(data);
         var current_page = parseInt($('.current_page').val());
-        var index = (Object.keys(obj).length * current_page) - 1;
-        console.log(index);
-        $('.attachments-viewer').html(articlesTemplate(obj));
-        $('.pagination-bar').html(articlesPaginationBar(obj[index].total_page))
+        var index = Object.keys(obj)[0];
+        $('.attachments-viewer').html(attachmentsTemplate(obj));
+        $('.pagination-bar').html(attachmentsPaginationBar(obj[index].total_page))
       }).fail(function () {
-          alert('Articles could not be loaded.');
+          alert('Attachments could not be loaded.');
       });   
   }
 
-  function articlesPaginationBar(totalPage = 1){
+  function attachmentsPaginationBar(totalPage = 1){
       var template_pager_bar = '';
       var previous_disabled = '';
       var next_disabled = '';
@@ -31,20 +30,20 @@ $(document).ready(function(){
         next_disabled = '';
       }
 
-      if(current_page == totalPage){
-        next_disabled = 'disabled';
-      }else{
-        next_disabled = '';
-      }
-
       if(current_page == 1){
         previous_disabled = 'disabled';
       }else{
         next_disabled = '';
       }
 
-      previous = current_page - 1;
-      next = current_page + 1;
+      if(current_page == totalPage){
+        next_disabled = 'disabled';
+      }else{
+        next_disabled = '';
+      }
+
+      var previous = current_page - 1;
+      var next = current_page + 1;
 
       template_pager_bar += '<div class="d-flex flex-row justify-content-center mt-3">'+
       '<div class="p2">'+
@@ -57,8 +56,9 @@ $(document).ready(function(){
         '</a>'+
       '</li>';
 
-      for($a=1; $a<=totalPage; $a++){
-        template_pager_bar += '<li class="page-item"><a class="page-link attachment-page-link" href="#" role="'+ $a +'">'+ $a +'</a></li>'
+      for(var a=1; a<=totalPage; a++){
+        var active = (a === current_page)? 'active':'';
+        template_pager_bar += '<li class="page-item '+ active +'"><a class="page-link attachment-page-link" href="#" role="'+ a +'">'+ a +'</a></li>'
       }
 
       template_pager_bar += '<li class="page-item '+ next_disabled +'">'+
@@ -73,62 +73,217 @@ $(document).ready(function(){
       return template_pager_bar;
   }
 
-  function articlesTemplate(data){
+  function attachmentsTemplate(data){
 
       var template = '';
 
       $.each(data, function(index, value){
-          template += '<a href="'+ value.url +'" target="_blank" class="files-attachment-link">'+
+        var except_extension = ['pdf', 'xls', 'xlsx', 'doc', 'docx', 'txt'];
+          template += 
           '<div class="border files-attachment-box mr-1 mb-1">'+
             '<div class="d-flex flex-row flex-nowrap">'+
                 '<div class="p-2">'+
-                  '<div class="files-attachment-box-image pt-1">'+
-                      '<img src="'+ value.url +'" alt="" class="rounded-0 my-auto">'+
-                  '</div>'+
+                  '<div class="files-attachment-box-image pt-1">';
+                    if(jQuery.inArray(value.extension, except_extension) == -1){
+                      template += '<img src="'+ value.url +'" alt="" class="rounded-0 my-auto">';
+                    }else{
+                      template += '<img src="/images/extension_logo/'+ value.extension +'.png" alt="" class="rounded-0 my-auto extension_logo">';
+                    }
+          template += '</div>'+
                 '</div>'+
                 '<div class="p-2">'+
                     '<p class="mb-0"><small>' + value.truncate_filename + '</small></p>'+
-                    '<p class="mb-0"><small>' + value.mime + ' </small></p>'+
+                    '<p class="mb-0"><small>' + value.extension + ' </small></p>'+
                     '<p class="mb-0"><small>' + value.size + ' KB</small></p>'+
                 '</div>'+
             '</div>'+
-          '</div>'+
-        '</a>';
+            '<div class="d-flex flex-row flex-nowrap justify-content-end">'+
+                '<div class="p-1">'+
+                  '<a href="'+ value.url +'" target="_blank" class="files-attachment-link" title="瀏覽">' + 
+                    '<i class="fa fa-eye"></i>' + 
+                  '</a>' +
+                '</div>'+
+                '<div class="p-1">'+
+                  '<i class="fa fa-plus attachment-add" role="'+ value.url +'" extension="'+ value.extension +'"></i>'+
+                '</div>'+
+                '<div class="p-1">'+
+                  '<i class="fa fa-trash attachment-delete" role="'+ value.filename + '.' + value.extension +'" title="刪除"></i>'+
+                '</div>'+
+            '</div>'+
+          '</div>';
       });
-
-
 
       return template;
 
   }
 
   function initialize(page = 1){
-    getArticles(page);
+    getAttachments(page);
   }
 
-  initialize();
+  var hasAttachmentView = $('body').find('.attachments-viewer');
+  if(hasAttachmentView.length > 0){
+    initialize();
+  }
+  
 
   $('body').on('click', '.attachment-page-link', function(e){
       e.preventDefault();
       var page = $(this).attr('role');
       $('.current_page').val(page);
-      getArticles(page);
+      getAttachments(page);
   });
 
   $('body').on('click', '.attachment-page-prevoius', function(e){
     e.preventDefault();
     var page = $(this).attr('role');
     $('.current_page').val(page);
-    getArticles(page);
+    getAttachments(page);
   });
 
   $('body').on('click', '.attachment-page-next', function(e){
     e.preventDefault();
     var page = $(this).attr('role');
     $('.current_page').val(page);
-    getArticles(page);
+    getAttachments(page);
   });
 
+  $('body').on('click', '.btn-attachment-save', function(e){
+    e.preventDefault();
+      $.ajax({
+          url: '/backend/attachments',
+          type: 'POST',
+          cache: false,
+          data: new FormData($('.attachment-form')[0]),
+          processData: false,
+          contentType: false,
+          beforeSend: function() {
+            $('.btn-attachment-save').prop('disabled', true);
+            $('.btn-attachment-save').html('文件上傳中...');
+          },
+          success: function (res) {
+            if(res.errors.length > 0){
+              var template = '<ol>';
+              template += '<li>發生以下錯誤:</li>';
+              for(var a=0; a < res.errors.length; a++){
+                template += '<li> <i class="fa fa-times"> &nbsp;'+ res.errors[a] + '</li>';
+              } 
+              template += '</ol>';
+             
+              $('.attachment-form-alert-box').html(template);
+              $('.attachment-form-alert-box').show('blind').delay(3000).hide('blind');
+              $('.btn-attachment-save').prop('disabled', false);
+              $('.btn-attachment-save').html('儲存');
+              return false;
+            }
 
+            if(res.success.length > 0){
+              getAttachments(1);
+            }else{
+              $('.attachment-form-alert-box').html(res.failed[0]);
+            }
+            
+            $('.btn-attachment-save').prop('disabled', false);
+            $('.btn-attachment-save').html('儲存');
+            $('.attachment-form')[0].reset();
+          },
+          error: function(xhr){
+            console.log('Attachment save function abnormal (status: ' + xhr.status + ')' );
+          }
+
+      });
+  });
+
+  $('body').on('click', '.attachment-delete', function(e){
+    e.preventDefault();
+    var filename = $(this).attr('role');
+    var csrf = $('input[name="_token"]').val();
+
+    $.confirm({
+      title: '確定刪除附件檔案?',
+      content: '(刪除後檔案將不能恢復!)',
+      buttons: {
+          確定: function () {
+              $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': csrf
+                }
+              });
+
+              $.ajax({
+                url: "/backend/attachments/" + filename,
+                type:"DELETE",
+                dataType : 'JSON', 
+                cache : false,
+                success: function(res){
+                  var current_page = parseInt($('.current_page').val());
+                  if(res.success.length > 0)
+                  {
+                    $.alert(res.success);
+                  }
+
+                  if(res.error.length > 0){
+                    $.alert(res.error);
+                  }
+
+                  getAttachments(current_page);
+
+                },
+                error: function(xhr){
+                  console.log('Attachment delete function abnormal (status: ' + xhr.status + ')');
+                }
+              });
+          },
+          取消: function () {
+              $.alert('附件檔案刪除動作已取消');
+          }
+      }
+  });
+
+  });
+
+  $('body').on('click', '.attachment-add', function(e){
+    e.preventDefault();
+    var except_extension = ['pdf', 'xls', 'xlsx', 'doc', 'docx', 'txt'];
+    var url = $(this).attr('role');
+    var extension = $(this).attr('extension');
+    if(jQuery.inArray(extension, except_extension) == -1){
+      $('#summernote').trigger('focus');
+      $('#summernote').summernote('insertImage', url);
+
+      $.confirm({
+          theme: 'Modern',
+          title: '圖片附加成功',
+          content: '',
+          icon: 'fa fa-check',
+          type: 'green',
+          buttons: {
+            確定: function(){}
+          }
+
+      });
+
+    }else{
+      $('#summernote').summernote('createLink', {
+        text: '檔案下載',
+        url: document.location.host + url,
+        isNewWindow: true
+      });
+
+      $.confirm({
+        theme: 'Modern',
+        title: '檔案附加成功',
+        content: '',
+        icon: 'fa fa-check',
+        type: 'green',
+        buttons: {
+          確定: function(){}
+        }
+
+    });
+
+    }
+    
+  });
 
 });

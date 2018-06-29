@@ -18,13 +18,15 @@ class NewsController extends BackendController
     }
 
     public function index(){
-        return view('backend.news.index', compact('attachments'));
+        $news = $this->news->orderBy('created_at', 'desc')->get();
+        return view('backend.news.index', compact('attachments', 'news'));
     }
 
     public function create(){
         $route = URL::route('admin.news.store');
         $attachments = collect($this->getAllAttachment())->forPage(1,5);
-        return view('backend.news.create', compact('route', 'attachments'));
+        $number_news = $this->news->count();
+        return view('backend.news.create', compact('route', 'attachments', 'number_news'));
     }
 
     public function edit($id){
