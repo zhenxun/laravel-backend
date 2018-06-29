@@ -18,13 +18,20 @@ Route::get('/', function () {
 Route::group(['prefix' => 'backend', 'namespace' => 'Backend', 'as' => 'admin.'], function(){
 
     Route::get('/login', 'LoginController@showLoginForm')->name('login');
-    Route::post('/login', 'LoginController@login')->name('login.thread');
+    Route::post('/login', 'LoginController@login')->name('login.submit');
     Route::post('/logout', 'LoginController@logout')->name('logout');
 
+    Route::group(['middleware' => ['auth:admin']], function(){
+        Route::get('/', 'DashboardController@index')->name('dashboard');
+        Route::resource('news', 'NewsController');
+        Route::resource('attachments', 'AttachmentsController', ['only' => ['store', 'destroy']]);
+        Route::get('api/attachments/{pages}', 'AttachmentsController@getArticles')->name('attachment.api');
+    });
 
-    Route::get('/', 'DashboardController@index')->name('dashboard');
-    Route::resource('news', 'NewsController');
-    Route::resource('attachments', 'AttachmentsController', ['only' => ['store', 'destroy']]);
-    Route::get('api/attachments/{pages}', 'AttachmentsController@getArticles')->name('attachment.api');
+
 
 });
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

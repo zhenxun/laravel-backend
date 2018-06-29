@@ -15,6 +15,9 @@ class CreateAdministratorRolesTable extends Migration
     {
         Schema::create('administrator_roles', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('administrator_id')->unsigned();
+            $table->foreign('administrator_id')->references('id')->on('administrators')->onDelete('cascade');
+            $table->integer('role')->default(3)->comment('1:superuser; 2:admin; 3:guest');
             $table->timestamps();
         });
     }
