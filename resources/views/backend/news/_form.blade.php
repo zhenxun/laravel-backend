@@ -1,6 +1,7 @@
 {{ Form::open(array('url' => $route)) }}
 
       @component('layouts.backend.components.form_header_box')
+        @slot('open_attachment') true @endslot
         @slot('attachment') {{ route('admin.news.index') }} @endslot
         @slot('back') {{ route('admin.news.index') }} @endslot
       @endcomponent
