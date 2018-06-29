@@ -24,6 +24,7 @@ Route::group(['prefix' => 'backend', 'namespace' => 'Backend', 'as' => 'admin.']
     Route::group(['middleware' => ['auth:admin']], function(){
         Route::get('/', 'DashboardController@index')->name('dashboard');
         Route::resource('news', 'NewsController');
+        Route::resource('users', 'UsersController');
         Route::resource('attachments', 'AttachmentsController', ['only' => ['store', 'destroy']]);
         Route::get('api/attachments/{pages}', 'AttachmentsController@getArticles')->name('attachment.api');
     });

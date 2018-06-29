@@ -12,11 +12,11 @@ class Administrator extends Authenticatable
     protected $guard = 'admin';
 
     protected $fillable = [
-        'name', 'email', 'status'
+        'name', 'email', 'status', 'password',
     ];    
 
     protected $hidden = [
-        'password', 'remember_token',
+        'remember_token',
     ];
 
     public function role(){
