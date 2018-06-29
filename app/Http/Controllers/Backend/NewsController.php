@@ -28,6 +28,7 @@ class NewsController extends BackendController
         $route = URL::route('admin.news.store');
         $number_news = $this->news->count();
         $attachments = collect($this->getAllAttachment())->forPage(1,5);
+        $number_news = $this->news->count();
         return view('backend.news.create', compact('route', 'attachments', 'number_news'));
     }
 
