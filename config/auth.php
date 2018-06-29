@@ -1,5 +1,7 @@
 <?php
 
+
+
 return [
 
     /*
@@ -45,6 +47,11 @@ return [
             'driver' => 'token',
             'provider' => 'users',
         ],
+
+        'admin' => [
+            'driver' => 'session',
+            'provider' => 'administrators'
+        ]
     ],
 
     /*
@@ -69,6 +76,11 @@ return [
             'driver' => 'eloquent',
             'model' => App\User::class,
         ],
+
+        'administrators' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Administrator::class,
+        ]
 
         // 'users' => [
         //     'driver' => 'database',

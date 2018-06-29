@@ -2,9 +2,24 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
 
-class Administrator extends Model
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use App\Models\AdministratorRole;
+
+class Administrator extends Authenticatable
 {
-    //
+    protected $guard = 'admin';
+
+    protected $fillable = [
+        'name', 'email', 'status'
+    ];    
+
+    protected $hidden = [
+        'password', 'remember_token',
+    ];
+
+    public function role(){
+        return $this->hasOne(AdministratorRole::class, 'administrator_id');
+    }
 }
