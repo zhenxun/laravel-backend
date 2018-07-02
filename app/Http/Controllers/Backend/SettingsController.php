@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Backend;
 
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
+use App\Http\Controllers\BackendController;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\URL;
@@ -13,12 +13,14 @@ use App\Models\Setting;
 use App\Http\Requests\Backend\SettingUpdateRequest;
 
 
-class SettingsController extends Controller
+class SettingsController extends BackendController
 {
     protected $settings;
 
     public function __construct(Setting $settings){
         $this->settings = $settings;
+        $title = $this->getHeaderTitle();
+        $method = $this->getHeaderMethod();
     }
 
     public function index(){
@@ -27,7 +29,8 @@ class SettingsController extends Controller
 
     public function edit(){
         $route = URL::route('admin.settings.update', 'setting');
-        return view('backend.settings.edit', compact('route'));
+        $settings = $this->settings->all();
+        return view('backend.settings.edit', compact('route', 'settings'));
     }
 
     public function update(SettingUpdateRequest $request){

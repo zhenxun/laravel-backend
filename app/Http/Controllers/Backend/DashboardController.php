@@ -10,7 +10,7 @@ class DashboardController extends BackendController
 {
     public function __construct(){
         $title = $this->getHeaderTitle();
-        $title = $this->getHeaderTitle();
+        $method = $this->getHeaderMethod();
     }
 
     public function index(){
