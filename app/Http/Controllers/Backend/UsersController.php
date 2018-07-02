@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Backend;
 
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
+use App\Http\Controllers\BackendController;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\URL;
 use Illuminate\Support\Facades\Auth;
@@ -12,7 +12,7 @@ use App\Models\AdministratorRole;
 use App\Http\Requests\Backend\UsersStoreRequest;
 use App\Http\Requests\Backend\UsersUpdateRequest;
 
-class UsersController extends Controller
+class UsersController extends BackendController
 {
     protected $admin;
     protected $role;
@@ -21,6 +21,8 @@ class UsersController extends Controller
 
         $this->admin = $admin;
         $this->role = $role;
+        $title = $this->getHeaderTitle();
+        $method = $this->getHeaderMethod();
     }
 
     public function index(){

@@ -17,6 +17,8 @@ class NewsController extends BackendController
 
     public function __construct(News $news){
         $this->news = $news;
+        $title = $this->getHeaderTitle();
+        $method = $this->getHeaderMethod();
     }
 
     public function index(){
