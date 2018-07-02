@@ -8,14 +8,24 @@
             @component('layouts.backend.components.action_box')
                 @slot('icon') fa-paper-plane @endslot
                 @slot('url') {{ route('admin.news.index') }} @endslot
-                最新消息
+                {{ trans('dashboard.news') }}
             @endcomponent
 
+<<<<<<< Updated upstream
             @component('layouts.backend.components.action_box')
                 @slot('icon') fa-users @endslot
                 @slot('url') {{ route('admin.users.index') }} @endslot
                 帳號管理
             @endcomponent
+=======
+            @if($permit)
+                @component('layouts.backend.components.action_box')
+                    @slot('icon') fa-users @endslot
+                    @slot('url') {{ route('admin.users.index') }} @endslot
+                    {{ trans('dashboard.administrator') }}
+                @endcomponent
+            @endif
+>>>>>>> Stashed changes
 
         </div>
     </section>

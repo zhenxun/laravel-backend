@@ -12,7 +12,7 @@
         </div>
         <div class="col-4 px-0 my-3">
             <div class="col-10 px-0">
-                <input class="form-control form-control-lg page-header-input-search" type="text" placeholder="Search">
+                <input class="form-control form-control-lg page-header-input-search" type="text" placeholder="{{ trans('header.searchbar') }}">
             </div>
         </div>
     </div>
