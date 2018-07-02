@@ -1,18 +1,18 @@
 <div class="col-12 text-right form-header-box">
   <ul>
     <li>
-        <button type="submit" class="form-header-box-save"> <i class="fa fa-save"></i> {{ trans('header.form.save') }} </button>
+        <button type="submit" class="form-header-box-save"> <i class="fa fa-save"></i> 儲存 </button>
     </li>
     @if($open_attachment == 'true')
     <li>
         <button type="button" class="form-header-box-attachment" data-toggle="modal" data-target=".bd-example-modal-lg">
-            <i class="fa fa-paperclip"></i> {{ trans('header.form.attachment') }}
+            <i class="fa fa-paperclip"></i> 附件
         </button>
     </li>
     @endif
     <li>
         <a href="{{ $back }}">
-            <i class="fa fa-angle-left"></i> {{ trans('header.form.back') }}
+            <i class="fa fa-angle-left"></i> 回上一頁
         </a>
     </li>
   </ul>

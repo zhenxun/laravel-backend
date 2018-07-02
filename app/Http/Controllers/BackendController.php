@@ -30,41 +30,4 @@ class BackendController extends Controller
         return $data;
     }
 
-<<<<<<< Updated upstream
-=======
-    public function candoit($method, $class){
-
-        $can = $this->admin->can($method, $class);
-        if(!$can){
-            return abort(403, 'Unauthorized action.');
-        }
-    }
-
-    public function getHeaderTitle(){
-        $route_name = Route::currentRouteName();
-        $split_route_name = explode('.', $route_name);
-
-        if(isset($split_route_name[1])){
-            $title = $split_route_name[1];
-        }else{
-            $title = 'index';
-        }
-
-        return Config::set('global.title', $title);
-    }
-
-    public function getHeaderMethod(){
-        $route_name = Route::currentRouteName();
-        $split_route_name = explode('.', $route_name);
-
-        if(isset($split_route_name[2])){
-            $method = $split_route_name[2];
-        }else{
-            $method = 'index';
-        }
-
-       return Config::set('global.method', $method);
-    }
-
->>>>>>> Stashed changes
 }
