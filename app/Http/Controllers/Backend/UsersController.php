@@ -21,8 +21,8 @@ class UsersController extends BackendController
 
         $this->admin = $admin;
         $this->role = $role;
-        $this->getHeaderTitle();
-        $this->getHeaderMethod();
+        $title = $this->getHeaderTitle();
+        $method = $this->getHeaderMethod();
     }
 
     public function index(){

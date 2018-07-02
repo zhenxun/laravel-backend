@@ -15,12 +15,7 @@ class DashboardController extends BackendController
 
     public function index(){
         $permit = Auth::guard('admin')->user()->isPermit();
-
-
-        return view('backend.dashboard.index', compact(
-            'permit', 'title', 'method'
-        ));
-
+        return view('backend.dashboard.index', compact('permit'));
     }
 
 }

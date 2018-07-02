@@ -50,8 +50,13 @@ class BackendController extends Controller
     public function getHeaderTitle(){
         $route_name = Route::currentRouteName();
         $split_route_name = explode('.', $route_name);
+        if(isset($split_route_name[1])){
+            $title = $split_route_name[1];
+        }else{
+            $title = 'index';
+        }
+        return Config::set('global.title', $title);
 
-        return Config::set('global.title', $split_route_name[1]);
     }
 
     public function getHeaderMethod(){
@@ -63,8 +68,8 @@ class BackendController extends Controller
         }else{
             $method = 'index';
         }
+       return Config::set('global.method', $method);
 
-        return Config::set('global.method', $method);
     }
 
 }

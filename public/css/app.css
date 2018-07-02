@@ -13780,13 +13780,13 @@ body {
   height: 60px;
   line-height: 60px;
   /* Vertically center the text there */
-  background-color: #203A45;
+  background-color: transparent;
 }
 
 .footer > .container {
   padding-right: 15px;
-  padding-left: 15px;
-  color: white;
+  padding-left: 35px;
+  color: black;
   margin-left: 25px !important;
 }
 

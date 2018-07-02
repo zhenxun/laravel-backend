@@ -5,6 +5,7 @@ return[
         'dashboard' => 'Dashboard',
         'news' => 'News',
         'users' => 'Users',
+        'settings' => 'Settings'
     ],
     'breadcrumb' => [
         'home' => 'Home',
@@ -23,6 +24,21 @@ return[
             'create' => 'Create',
             'edit' => 'Edit'
         ],
-
+        'settings' => [
+            'index' => 'Settings',
+            'edit' => 'Edit'
+        ]
     ],
+    'searchbar' => 'Search',
+    'form' => [
+        'save' => 'Save',
+        'attachment' => 'Attachment',
+        'back' => 'Back',
+    ],
+    'index' => [
+        'add' => 'Add',
+        'back' => 'Back'
+    ]
+    ],
+
 ];

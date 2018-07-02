@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use App\Models\AdministratorRole;
 
+
 class Administrator extends Authenticatable
 {
     protected $guard = 'admin';
@@ -50,5 +51,7 @@ class Administrator extends Authenticatable
     public function oldPassword($id){
         $user = $this->find($id);
         return $user->password;
-    }
+    }    
+
+
 }
