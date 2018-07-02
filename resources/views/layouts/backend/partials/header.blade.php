@@ -2,11 +2,25 @@
   <div class="container-fluid">
     <div class="row page-header-row">
         <div class="col-8">
-            <h1 class="page-header-title">Dashboard</h1>
+            <h1 class="page-header-title">
+                {{ trans('header.title.'. config('global.title')) }}
+            </h1>
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb page-header-breadcrumb">
-                  <li class="breadcrumb-item page-header-breadcrumb-item " aria-current="page">Home</li>
-                  <li class="breadcrumb-item page-header-breadcrumb-item-active" aria-current="page">Library</li>
+                  <li class="breadcrumb-item page-header-breadcrumb-item " aria-current="page">{{ trans('header.breadcrumb.home') }}
+                  </li>
+                  <li class="breadcrumb-item page-header-breadcrumb-item{{ (config('global.method') == 'index')? '-active':'' }}" aria-current="page">
+                      @if(config('global.method') == 'index')
+                      {{ trans('header.breadcrumb.'.config('global.title').'.'.config('global.method')) }}
+                      @else
+                        {{ trans('header.breadcrumb.'.config('global.title').'.index')}}
+                      @endif
+                  </li>
+                  @if(config('global.method') != 'index')
+                  <li class="breadcrumb-item page-header-breadcrumb-item-active" aria-current="page">
+                    {{ trans('header.breadcrumb.'.config('global.title').'.'.config('global.method')) }}
+                  </li>
+                  @endif
                 </ol>
             </nav>
         </div>

@@ -18,15 +18,9 @@ class UsersPolicy
      * @param  \Backend\Administrator  $administrator
      * @return mixed
      */
-    public function view(Administrator $admin)
+    public function view(Administrator $admin)/**you fool */
     {
-        $admin = AdministratorRole::where('administrator_id', Auth::id())->first();
-
-        if($admin->role == '1' || $admin->role == '2'){
-            return true;
-        }else{
-            return false;
-        }
+        return $this->checkAdminRole();
     }
 
     /**
@@ -35,9 +29,9 @@ class UsersPolicy
      * @param  \App\User  $user
      * @return mixed
      */
-    public function create(User $user)
+    public function create(Administrator $admin)
     {
-        //
+        return $this->checkAdminRole();
     }
 
     /**
@@ -47,9 +41,9 @@ class UsersPolicy
      * @param  \Backend\Administrator  $administrator
      * @return mixed
      */
-    public function update(Administrator $administrator)
+    public function update(Administrator $admin)
     {
-        //
+        return $this->checkAdminRole();
     }
 
     /**
@@ -59,8 +53,20 @@ class UsersPolicy
      * @param  \Backend\Administrator  $administrator
      * @return mixed
      */
-    public function delete(Administrator $administrator)
+    public function delete(Administrator $admin)
     {
-        //
+        return  $this->checkAdminRole();
+    }
+
+    private function checkAdminRole(){
+
+        $admin = AdministratorRole::where('administrator_id', Auth::id())->first();
+
+        if($admin->role == '1' || $admin->role == '2'){
+            return true;
+        }else{
+            return false;
+        }
+
     }
 }

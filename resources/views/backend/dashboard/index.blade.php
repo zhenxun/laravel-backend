@@ -11,11 +11,13 @@
                 最新消息
             @endcomponent
 
-            @component('layouts.backend.components.action_box')
-                @slot('icon') fa-users @endslot
-                @slot('url') {{ route('admin.users.index') }} @endslot
-                帳號管理
-            @endcomponent
+            @if($permit)
+                @component('layouts.backend.components.action_box')
+                    @slot('icon') fa-users @endslot
+                    @slot('url') {{ route('admin.users.index') }} @endslot
+                    帳號管理
+                @endcomponent
+            @endif
 
         </div>
     </section>
