@@ -23,11 +23,11 @@
             <div class="dropdown-menu backend-top-navbar-dropdown" aria-labelledby="navbarDropdownMenuLink">
               <a class="dropdown-item" href="#">
                 <i class="fa fa-user-circle"></i> &nbsp;
-                Profile
+                {{ trans('nav.profile') }}
               </a>
-              <a class="dropdown-item" href="#">
+              <a class="dropdown-item" href="{{ route('admin.settings.index') }}">
                   <i class="fa fa-cog"></i> &nbsp;
-                Setting
+                  {{ trans('nav.setting') }}
               </a>
               <div class="dropdown-divider"></div>
               <a class="dropdown-item" href="{{ route('admin.logout') }}"  onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
@@ -35,7 +35,7 @@
                       @csrf
                   </form>
                 <i class="fa fa-sign-out"></i> &nbsp;
-                Logout
+                {{ trans('nav.logout') }}
               </a>
             </div>
           </li>
