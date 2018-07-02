@@ -6,7 +6,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use App\Models\AdministratorRole;
-use Illuminate\Support\Facades\Route;
+
 
 class Administrator extends Authenticatable
 {
