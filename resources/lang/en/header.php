@@ -7,6 +7,7 @@ return[
         'users' => 'Users',
         'settings' => 'Settings'
     ],
+
     'breadcrumb' => [
         'home' => 'Home',
         'dashboard' => [
@@ -38,7 +39,6 @@ return[
     'index' => [
         'add' => 'Add',
         'back' => 'Back'
-    ]
     ],
 
 ];
