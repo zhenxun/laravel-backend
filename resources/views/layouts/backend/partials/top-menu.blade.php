@@ -1,9 +1,9 @@
-<div class="container">
+{{-- <div class="container">
   <div class="row">
       <div class="col splash"></div>
   </div>
 
-</div>
+</div> --}}
 
 <nav class="navbar navbar-expand-lg backend-top-navbar">
     <a class="navbar-brand" href="#">

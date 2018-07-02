@@ -23,7 +23,9 @@ class NewsController extends BackendController
 
     public function index(){
         $news = $this->news->orderBy('updated_at', 'desc')->get();
-        return view('backend.news.index', compact('news'));
+        return view('backend.news.index', compact(
+            'title', 'method', 'news'
+        ));
     }
 
     public function create(){

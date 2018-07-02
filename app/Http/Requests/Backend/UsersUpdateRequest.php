@@ -13,7 +13,7 @@ class UsersUpdateRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,18 @@ class UsersUpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'name' => 'required',
+            'email' => 'required|email',
+            'role' => 'required',
+        ];
+    }
+
+    public function messages(){
+        return [
+            'name.required' => '姓名不能空白',
+            'email.required' => '電子郵件不能空白',
+            'email.email' => '電子郵件格式錯誤',
+            'role.required' => '必須至少擁有一個權限',
         ];
     }
 }

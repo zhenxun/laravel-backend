@@ -7,9 +7,16 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Config;
+use App\Models\Administrator;
 
 class BackendController extends Controller
 {
+    protected $admin;
+
+    public function __construct(Administrator $admin){
+        $this->admin = $admin;
+    }
+
     public function getAllAttachment($per_page = 5){
         $directory = 'public/attachments';
         $files_path = Storage::allFiles($directory);
@@ -25,10 +32,10 @@ class BackendController extends Controller
                 'url' => Storage::url($file),
                 'total' => count($files_path),
                 'total_page' => ceil(count($files_path)/$per_page),
-                'time' => Storage::lastModified($file) 
+                'time' => Storage::lastModified($file)
             );
         }
-        
+
         return $data;
     }
 
@@ -43,14 +50,13 @@ class BackendController extends Controller
     public function getHeaderTitle(){
         $route_name = Route::currentRouteName();
         $split_route_name = explode('.', $route_name);
-
         if(isset($split_route_name[1])){
             $title = $split_route_name[1];
         }else{
             $title = 'index';
         }
-
         return Config::set('global.title', $title);
+
     }
 
     public function getHeaderMethod(){
@@ -62,8 +68,8 @@ class BackendController extends Controller
         }else{
             $method = 'index';
         }
-
        return Config::set('global.method', $method);
+
     }
 
 }

@@ -14,7 +14,7 @@ class Administrator extends Authenticatable
 
     protected $fillable = [
         'name', 'email', 'status', 'password',
-    ];    
+    ];
 
     protected $hidden = [
         'remember_token',
@@ -52,5 +52,6 @@ class Administrator extends Authenticatable
         $user = $this->find($id);
         return $user->password;
     }    
+
 
 }

@@ -39,4 +39,6 @@ return[
         'add' => 'Add',
         'back' => 'Back'
     ]
+    ],
+
 ];
