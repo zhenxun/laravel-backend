@@ -53,15 +53,15 @@ class SettingsController extends BackendController
             }
 
             $update = $this->settings->where('id', $request->input('id')[$i])->update([
-                'item' => $request->input('value')[$i],
+                'value' => $request->input('value')[$i],
             ]);
 
         }
 
         if($update){
-            Redirect::route('admin.settings.edit', 'setting')->with('success', trans('messages.success'));
+            return Redirect::route('admin.settings.edit', 'setting')->with('success', trans('messages.success'));
         }else{
-            Redirect::route('admin.settings.edit', 'setting')->with('failed', trans('messages.failed'));
+            return Redirect::route('admin.settings.edit', 'setting')->with('failed', trans('messages.failed'));
         }
 
     }
@@ -71,6 +71,6 @@ class SettingsController extends BackendController
     }
 
     private function setSession($key, $value){
-        return Session::push($key, $value);
+        return Session::put($key, $value);
     }
 }

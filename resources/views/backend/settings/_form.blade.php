@@ -32,14 +32,14 @@
             @endif
 
           <div class="form-check form-check-inline">
-              <input class="form-check-input" type="radio" name="inlineRadioOptions" id="en" value="en" {{ $en }}>
+              <input class="form-check-input" type="radio" name="value[]" id="en" value="en" {{ $en }}>
               <label class="form-check-label" for="en">
                 <img src="{{ asset('images/en.png') }}"> &nbsp;
                 {{ trans('setting.lang.en') }} {{ $default_en }} 
               </label>
             </div>
             <div class="form-check form-check-inline">
-              <input class="form-check-input" type="radio" name="inlineRadioOptions" id="tw" value="zh-tw" {{ $tw }}>
+              <input class="form-check-input" type="radio" name="value[]" id="tw" value="zh-tw" {{ $tw }}>
               <label class="form-check-label" for="tw">
                   <img src="{{ asset('images/zh-tw.png') }}"> &nbsp;
                 {{ trans('setting.lang.zh-tw') }} {{ $default_tw }}
