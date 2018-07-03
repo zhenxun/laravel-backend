@@ -49,6 +49,10 @@ return[
         'sms_email' => [
           'label' => 'SMS/Email',
           'agree' => 'Agree', 
+        ],
+        'remarks' => [
+          'label' => 'Remarks',
+          'placeholder' => 'Remarks',
         ]
 
     ],

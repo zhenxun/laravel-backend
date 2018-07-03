@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
 use App\Models\Members;
 use App\Http\Requests\Backend\CsvStoreRequest;
+use App\Http\Requests\Backend\MembersStoreRequest;
 
 class MembersController extends BackendController
 {
@@ -29,7 +30,7 @@ class MembersController extends BackendController
     }
 
     public function create(){
-        $route = URL::route('admin.members.create');
+        $route = URL::route('admin.members.store');
         $csv_import_url = URL::route('admin.members.csv.import');
         return view('backend.members.create', compact('route', 'csv_import_url'));
     }
@@ -39,7 +40,27 @@ class MembersController extends BackendController
         return view('backend.members.edit', compact('route'));
     }  
 
-    public function store(){
+    public function store(MembersStoreRequest $request){
+
+        $member_code = array('member_code' => $this->yieldMemberCode());
+        
+        $consent = ($request->has('consent'))? true:false;
+        $recive_adv = ($request->has('recive_adv'))? true:false;
+
+        $replacement_consent = array('consent' => $consent);
+        $replacement_recive_adv = array('recive_adv' => $recive_adv);
+
+        $basket = array_replace($request->except('_token'), $replacement_consent);
+        $basket = array_replace($basket, $replacement_recive_adv);
+        $basket = $basket +  $member_code;
+
+        $store = $this->members->firstOrCreate($basket);
+
+        if($store){
+            return Redirect::route('admin.members.index')->with('success', trans('messages.success'));
+        }else{
+            return Redirect::route('admin.members.index')->with('success', trans('messages.failed'));
+        }
 
     }
 
@@ -114,6 +135,16 @@ class MembersController extends BackendController
         }
 
         return $data;
+    }
+
+    private function yieldMemberCode(){
+
+        $num_of_member = $this->members->count() + 1;
+
+        $code = 'HNC'. str_pad($num_of_member, 5, '0', STR_PAD_LEFT);
+
+        return $code;
+
     }
 
 }
