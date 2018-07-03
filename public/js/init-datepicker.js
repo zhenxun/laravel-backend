@@ -76,7 +76,14 @@ module.exports = __webpack_require__(50);
 /***/ 50:
 /***/ (function(module, exports) {
 
-throw new Error("Module build failed: Error: ENOENT: no such file or directory, open 'C:\\xampp\\htdocs\\laravel-backend\\resources\\assets\\js\\init-datepicker.js'");
+$(document).ready(function () {
+
+  $('#joining_date').datepicker({
+    format: 'yyyy-mm-dd',
+    calendarWeeks: true,
+    todayHighlight: true
+  });
+});
 
 /***/ })
 

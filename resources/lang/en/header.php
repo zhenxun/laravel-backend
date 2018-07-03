@@ -4,6 +4,7 @@ return[
     'title' => [
         'dashboard' => 'Dashboard',
         'news' => 'News',
+        'members' => 'Members',
         'users' => 'Users',
         'settings' => 'Settings'
     ],
@@ -17,6 +18,11 @@ return[
         ],
         'news' => [
             'index' => 'News',
+            'create' => 'Create',
+            'edit' => 'Edit'
+        ],
+        'members' => [
+            'index' => 'Members',
             'create' => 'Create',
             'edit' => 'Edit'
         ],
