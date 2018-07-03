@@ -19,6 +19,12 @@
                 @endcomponent
             @endif
 
+            @component('layouts.backend.components.action_box')
+                @slot('icon') fa-user-circle-o @endslot
+                @slot('url') {{ route('admin.members.index') }} @endslot
+                {{ trans('dashboard.members') }}
+            @endcomponent
+
         </div>
     </section>
 

@@ -72,4 +72,12 @@ class BackendController extends Controller
 
     }
 
+    public function store_file($file, $path){
+
+        $path = $file->store($path);
+    
+        return $path;
+    }
+
+
 }

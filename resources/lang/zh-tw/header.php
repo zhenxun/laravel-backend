@@ -4,6 +4,7 @@ return[
     'title' => [
         'dashboard' => '控制台',
         'news' => '最新消息',
+        'members' => '會員管理',
         'users' => '帳號管理',
         'settings' => '系統設定'
     ],
@@ -16,6 +17,11 @@ return[
         ],
         'news' => [
             'index' => '最新消息',
+            'create' => '新增',
+            'edit' => '編輯'
+        ],
+        'members' => [
+            'index' => '會員管理',
             'create' => '新增',
             'edit' => '編輯'
         ],

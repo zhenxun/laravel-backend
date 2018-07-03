@@ -25,6 +25,8 @@ Route::group(['prefix' => 'backend', 'namespace' => 'Backend', 'as' => 'admin.']
         Route::get('/', 'DashboardController@index')->name('dashboard');
         Route::resource('news', 'NewsController');
         Route::resource('users', 'UsersController');
+        Route::resource('members', 'MembersController');
+        Route::post('/members/csv/import', 'MembersController@importCsv')->name('members.csv.import');
         Route::resource('attachments', 'AttachmentsController', ['only' => ['store', 'destroy']]);
         Route::get('api/attachments/{pages}', 'AttachmentsController@getArticles')->name('attachment.api');
         Route::resource('settings', 'SettingsController', ['only' => ['index', 'edit', 'update']]);
