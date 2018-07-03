@@ -38,7 +38,6 @@ return[
     'index' => [
         'add' => 'Add',
         'back' => 'Back'
-    ]
     ],
 
 ];
