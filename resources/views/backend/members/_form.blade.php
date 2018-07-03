@@ -25,32 +25,35 @@
 
       <div class="form-group">
         <label for="ename">{{ trans('form.members.ename.label') }}</label>
-        <input type="text" class="form-control" id="ename" placeholder="{{ trans('form.members.ename.placeholder') }}">
+        <input type="text" 
+                class="form-control" id="ename" 
+                name="ename" placeholder="{{ trans('form.members.ename.placeholder') }}"
+                value="{{ old('ename') }}">
       </div>
 
       <div class="form-group">
           <label for="cname">{{ trans('form.members.cname.label') }}</label>
-          <input type="text" class="form-control" id="cname" placeholder="{{ trans('form.members.cname.placeholder') }}">
+          <input type="text" class="form-control" id="cname" name="cname" placeholder="{{ trans('form.members.cname.placeholder') }}" value="{{ old('cname') }}">
       </div>
 
       <div class="form-group">
           <label for="email">{{ trans('form.members.email.label') }}</label>
-          <input type="email" class="form-control" id="email" placeholder="{{ trans('form.members.email.placeholder') }}">
+          <input type="email" class="form-control" id="email" name="email" placeholder="{{ trans('form.members.email.placeholder') }}" value="{{ old('email') }}">
       </div>
 
       <div class="form-group mb-0">
           <label for="gender">{{ trans('form.members.gender.label.default') }}</label>
       </div>
       <div class="form-check form-check-inline">
-          <input class="form-check-input" type="radio" name="gender" id="male" value="male" checked>
+          {{ Form::radio('gender', 'male', true, ['class' => 'form-check-input']) }}
           <label class="form-check-label" for="male">{{ trans('form.members.gender.label.male') }}</label>
       </div>
       <div class="form-check form-check-inline">
-        <input class="form-check-input" type="radio" name="gender" id="female" value="female">
+          {{ Form::radio('gender', 'female', false, ['class' => 'form-check-input']) }}
         <label class="form-check-label" for="female">{{ trans('form.members.gender.label.female') }}</label>
       </div>
       <div class="form-check form-check-inline">
-        <input class="form-check-input" type="radio" name="gender" id="other" value="other">
+          {{ Form::radio('gender', 'other', false, ['class' => 'form-check-input']) }}
         <label class="form-check-label" for="other">{{ trans('form.members.gender.label.other') }}</label>
       </div>
 
@@ -58,37 +61,51 @@
           <label for="age-group">{{ trans('form.members.age_group.label.default') }}</label>
       </div>
       <div class="form-check form-check-inline">
-          <input class="form-check-input" type="radio" name="age_group" id="a" value="A" checked>
+          {{ Form::radio('age_group', 'A', true, ['class' => 'form-check-input']) }}
           <label class="form-check-label" for="a">{{ trans('form.members.age_group.label.a') }}</label>
       </div>
       <div class="form-check form-check-inline">
-        <input class="form-check-input" type="radio" name="age_group" id="b" value="B">
+            {{ Form::radio('age_group', 'B', false, ['class' => 'form-check-input']) }}
         <label class="form-check-label" for="b">{{ trans('form.members.age_group.label.b') }}</label>
       </div>
       <div class="form-check form-check-inline">
-        <input class="form-check-input" type="radio" name="age_group" id="c" value="C">
+            {{ Form::radio('age_group', 'C', false, ['class' => 'form-check-input']) }}
         <label class="form-check-label" for="c">{{ trans('form.members.age_group.label.c') }}</label>
       </div>
       <div class="form-check form-check-inline">
-          <input class="form-check-input" type="radio" name="age_group" id="d" value="D">
+            {{ Form::radio('age_group', 'D', false, ['class' => 'form-check-input']) }}
           <label class="form-check-label" for="d">{{ trans('form.members.age_group.label.d') }}</label>
       </div>
 
       <div class="form-group mt-4">
           <label for="contact_number">{{ trans('form.members.contact_number.label') }}</label>
-          <input type="text" class="form-control" id="contact_number" placeholder="{{ trans('form.members.contact_number.placeholder') }}">
+          <input type="text" 
+                class="form-control" id="contact_number" 
+                name="contact_no" placeholder="{{ trans('form.members.contact_number.placeholder') }}"
+                value="{{ old('contact_number') }}">
       </div>
       
       <div class="form-group mt-4">
           <label for="joining_date">{{ trans('form.members.joining_date.label') }}</label>
-          <input type="text" class="form-control" id="joining_date" placeholder="{{ trans('form.members.joining_date.placeholder') }}">
+          <input type="text" 
+                class="form-control" id="joining_date" 
+                name="joining_date" placeholder="{{ trans('form.members.joining_date.placeholder') }}"
+                value="{{ old('joining_date') }}">
       </div>
+
+        <div class="form-group mt-4">
+            <label for="remarks">{{ trans('form.members.remarks.label') }}</label>
+            <input type="text" 
+                    class="form-control" id="remarks" 
+                    name="remarks" placeholder="{{ trans('form.members.remarks.placeholder') }}" 
+                    value="{{ old('remarks') }}">
+        </div>
 
       <div class="form-group mt-4 mb-0">
           <label for="sms_email">{{ trans('form.members.sms_email.label') }}</label>
       </div>
       <div class="form-check">
-          <input class="form-check-input" type="checkbox" name="recive_adv" id="sms_email" value="1">
+          {{ Form::checkbox('recive_adv', '1', false, ['class' => 'form-check-input', 'id' => 'sms_email']) }}
           <label class="form-check-label" for="sms_email">
             {{ trans('form.members.sms_email.agree') }} ?
           </label>
@@ -98,7 +115,7 @@
           <label for="consent">{{ trans('form.members.consent.label') }}</label>
       </div>
       <div class="form-check">
-          <input class="form-check-input" type="checkbox" name="consent" id="consent" value="1">
+            {{ Form::checkbox('consent', '1', false, ['class' => 'form-check-input', 'id' => 'consent']) }}
           <label class="form-check-label" for="consent">
             {{ trans('form.members.consent.agree') }} ?
           </label>
