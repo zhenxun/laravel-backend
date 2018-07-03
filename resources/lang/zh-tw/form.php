@@ -49,6 +49,10 @@ return[
         'sms_email' => [
           'label' => 'SMS/Email',
           'agree' => '同意', 
+        ],
+        'remarks' => [
+          'label' => '備註',
+          'placeholder' => '備註',
         ]
 
     ],

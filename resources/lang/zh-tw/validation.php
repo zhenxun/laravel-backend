@@ -143,6 +143,8 @@ return [
 
     'attributes' => [
       'csv' => 'CSV文件',
+      'ename' => '英文姓名',
+      'joining_date' => '入會日期'
     ],
 
 ];
