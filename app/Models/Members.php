@@ -8,7 +8,7 @@ class Members extends Model
 {
     protected $fillable = [
         'member_code', 'ename', 'cname', 'gender', 'age_group',
-        'contact_no', 'email', 'email', 'consent', 'recive_adv',
+        'contact_no', 'email', 'joining_date', 'consent', 'recive_adv',
         'remarks'
     ];
 }
