@@ -24,7 +24,8 @@ return[
         'members' => [
             'index' => 'Members',
             'create' => 'Create',
-            'edit' => 'Edit'
+            'edit' => 'Edit',
+            'show' => 'Show',
         ],
         'users' => [
             'index' => 'Users',
@@ -44,6 +45,7 @@ return[
     ],
     'index' => [
         'add' => 'Add',
+        'edit' => 'Edit',
         'back' => 'Back'
     ],
 

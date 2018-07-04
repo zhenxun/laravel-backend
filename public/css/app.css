@@ -13642,6 +13642,11 @@ a.text-dark:focus {
   color: #9ACD32 !important;
 }
 
+.table > tbody > tr > td,
+.table > tbody > tr > th {
+  vertical-align: middle;
+}
+
 div {
   outline: none;
 }

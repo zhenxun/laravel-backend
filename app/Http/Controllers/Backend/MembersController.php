@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Storage;
 use App\Models\Members;
 use App\Http\Requests\Backend\CsvStoreRequest;
 use App\Http\Requests\Backend\MembersStoreRequest;
+use App\Http\Requests\Backend\MembersUpdateRequest;
 
 class MembersController extends BackendController
 {
@@ -39,7 +40,12 @@ class MembersController extends BackendController
         $route = URL::route('admin.members.update', $id);
         $member = $this->members->find($id);
         return view('backend.members.edit', compact('route', 'member'));
-    }  
+    }
+    
+    public function show($id){
+        $member = $this->members->find($id);
+        return view('backend.members.show', compact('member'));
+    }
 
     public function store(MembersStoreRequest $request){
 
@@ -60,7 +66,7 @@ class MembersController extends BackendController
         if($store){
             return Redirect::route('admin.members.index')->with('success', trans('messages.success'));
         }else{
-            return Redirect::route('admin.members.index')->with('success', trans('messages.failed'));
+            return Redirect::route('admin.members.index')->with('failed', trans('messages.failed'));
         }
 
     }
@@ -103,16 +109,47 @@ class MembersController extends BackendController
         if($save){
             return Redirect::route('admin.members.index')->with('success', trans('messages.success'));
         }else{
-            return Redirect::route('admin.members.index')->with('success', trans('messages.failed'));
+            return Redirect::route('admin.members.index')->with('failed', trans('messages.failed'));
         }
         
     }
 
-    public function update(){
+    public function update(MembersUpdateRequest $request, $id){
+
+        $consent = ($request->has('consent'))? true:false;
+        $recive_adv = ($request->has('recive_adv'))? true:false;
+
+        $replacement_consent = array('consent' => $consent);
+        $replacement_recive_adv = array('recive_adv' => $recive_adv);
+
+        $basket = array_replace($request->except('_token', '_method'), $replacement_consent);
+        $basket = array_replace($basket, $replacement_recive_adv);
+
+        $update = $this->members->where('id', $id)->update($basket);
+
+        if($update){
+            return Redirect::route('admin.members.index')->with('success', trans('messages.success'));
+        }else{
+            return Redirect::route('admin.members.index')->with('failed', trans('messages.failed'));
+        }
 
     }
 
-    public function destroy(){
+    public function destroy($id){
+
+        $if_members_exist = $this->members->where('id', $id)->exists();
+
+        if($if_members_exist){
+            $delete = $this->members->where('id', $id)->delete();
+        }else{
+            $delete = false;
+        }
+
+        if($delete){
+            return Redirect::route('admin.members.index')->with('success', trans('messages.success-del'));
+        }else{
+            return Redirect::route('admin.members.index')->with('failed', trans('messages.failed-del'));
+        }        
 
     }
 

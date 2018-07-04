@@ -60,25 +60,49 @@
 /******/ 	__webpack_require__.p = "/";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 44);
+/******/ 	return __webpack_require__(__webpack_require__.s = 52);
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ 44:
+/***/ 52:
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(45);
+module.exports = __webpack_require__(53);
 
 
 /***/ }),
 
-/***/ 45:
+/***/ 53:
 /***/ (function(module, exports) {
 
-$('#exampleModal').on('shown.bs.modal', function (e) {
-  $('body').css('padding-right', '0');
-  $(this).css('padding-right', '0');
+$(document).ready(function () {
+
+  $(".toggle-delete").click(function (e) {
+    e.preventDefault();
+    var this_id = $(this).attr('role');
+    var get_lang = $('html').attr('lang');
+    var title = get_lang == 'en' ? 'Confirm delete' : '確定刪除';
+    var content = get_lang == 'en' ? 'If deleted, data will not be restored.' : '資料刪除後將無法恢復';
+
+    $.confirm({
+      theme: 'Modern',
+      title: title,
+      content: content,
+      icon: 'fa fa-question-circle-o',
+      type: 'red',
+      buttons: {
+        confirm: function confirm() {
+          var is_delete_form_exist = $('body').find('.btn-delete').length > 0;
+          if (is_delete_form_exist) {
+            $('body').find('#' + this_id).click();
+          }
+        },
+        cancel: function cancel() {}
+      }
+
+    });
+  });
 });
 
 /***/ })

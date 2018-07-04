@@ -23,7 +23,8 @@ return[
         'members' => [
             'index' => '會員管理',
             'create' => '新增',
-            'edit' => '編輯'
+            'edit' => '編輯',
+            'show' => '檢視',
         ],
         'users' => [
             'index' => '帳號管理',
@@ -43,6 +44,7 @@ return[
     ],
     'index' => [
         'add' => '新增',
+        'edit' => '編輯',
         'back' => '回上一頁'
     ]
 ];
