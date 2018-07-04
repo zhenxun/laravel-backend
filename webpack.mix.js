@@ -19,3 +19,4 @@ mix.js('resources/assets/js/init-modal.js', 'public/js');
 mix.js('resources/assets/js/init-attachments.js', 'public/js');
 mix.js('resources/assets/js/init-datatables.js', 'public/js');
 mix.js('resources/assets/js/init-datepicker.js', 'public/js');
+mix.js('resources/assets/js/init-custome-jquery.js', 'public/js');

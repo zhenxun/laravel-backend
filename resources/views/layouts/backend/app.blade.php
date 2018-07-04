@@ -41,6 +41,7 @@
       <script src="https://cdn.datatables.net/responsive/2.2.3/js/responsive.bootstrap.min.js"></script>
       <script src="{{ asset('js/init-datatables.js') }}"></script>
       <script src="{{ asset('js/init-datepicker.js') }}"></script>
+      <script src="{{ asset('js/init-custome-jquery.js') }}"></script>
 
   </body>
 </html>

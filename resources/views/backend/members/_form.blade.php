@@ -19,6 +19,10 @@
 
 {{ Form::open(array('url' => $route)) }}
 
+    @if(isset($member))
+        {{ method_field('PUT') }}
+    @endif
+
     @component('layouts.backend.components.form_header_box')
       @slot('open_attachment') false @endslot
       @slot('back') {{ route('admin.members.index') }} @endslot

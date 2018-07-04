@@ -5,5 +5,6 @@
     "/js/init-modal.js": "/js/init-modal.js",
     "/js/init-datepicker.js": "/js/init-datepicker.js",
     "/js/init-datatables.js": "/js/init-datatables.js",
+    "/js/init-custome-jquery.js": "/js/init-custome-jquery.js",
     "/js/init-attachments.js": "/js/init-attachments.js"
 }

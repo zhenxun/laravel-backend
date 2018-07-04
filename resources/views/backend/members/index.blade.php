@@ -9,6 +9,8 @@
                 @include('layouts.backend.components.alert.alert')
 
                 @component('layouts.backend.components.index_header')
+                  @slot('create') true @endslot
+                  @slot('edit') false @endslot
                   @slot('url_create') {{ route('admin.members.create') }} @endslot
                   @slot('url_back') {{ route('admin.dashboard') }} @endslot
                 @endcomponent
@@ -38,14 +40,17 @@
                                                 </a>
                                             </div>
                                             <div class="mr-3">
-                                                <a href="" title="檢視">
+                                                <a href="{{ route('admin.members.show', $member->id) }}" title="檢視">
                                                     <i class="fa fa-eye"></i>
                                                 </a>
                                             </div>
                                             <div class="">
-                                                <a href="" title="刪除">
+                                                <a href="" class="toggle-delete" role="{{ $member->id }}" title="刪除">
                                                     <i class="fa fa-trash"></i>
                                                 </a>
+                                                {{ Form::open(['method' => 'DELETE', 'route' => ['admin.members.destroy', $member->id]]) }}
+                                                    {{ Form::submit('Delete', ['class' => 'btn btn-danger btn-delete', 'id' => $member->id,  'style' => 'display:none']) }}
+                                                {{ Form::close() }}
                                             </div>
                                         </div> 
                                     </td>
