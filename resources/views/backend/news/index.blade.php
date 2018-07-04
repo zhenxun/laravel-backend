@@ -31,19 +31,24 @@
                                     <td class="datatable-editbar">
                                         <div class="d-flex justify-content-center flex-nowrap">
                                             <div class="mr-3">
-                                                <a href="" title="編輯">
+                                                <a href="{{ route('admin.news.edit', $data->id) }}" title="編輯">
                                                     <i class="fa fa-pencil"></i>
                                                 </a>
                                             </div>
                                             <div class="mr-3">
-                                                <a href="" title="檢視">
+                                                <a href="{{ route('admin.news.show', $data->id) }}" title="檢視">
                                                     <i class="fa fa-eye"></i>
                                                 </a>
                                             </div>
                                             <div class="">
-                                                <a href="" title="刪除">
+                                                <a href="" class="toggle-delete" role="{{ $data->id }}" title="刪除">
                                                     <i class="fa fa-trash"></i>
                                                 </a>
+
+                                                {{ Form::open(['method' => 'DELETE', 'route' => ['admin.news.destroy', $data->id]]) }}
+                                                    {{ Form::submit('Delete', ['class' => 'btn btn-danger btn-delete', 'id' => $data->id,  'style' => 'display:none']) }}
+                                                {{ Form::close() }}
+
                                             </div>
                                         </div> 
                                     </td>
