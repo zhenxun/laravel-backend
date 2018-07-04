@@ -18,7 +18,8 @@ return[
         'news' => [
             'index' => '最新消息',
             'create' => '新增',
-            'edit' => '編輯'
+            'edit' => '編輯',
+            'show' => '檢視',
         ],
         'members' => [
             'index' => '會員管理',

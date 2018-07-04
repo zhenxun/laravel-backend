@@ -19,7 +19,8 @@ return[
         'news' => [
             'index' => 'News',
             'create' => 'Create',
-            'edit' => 'Edit'
+            'edit' => 'Edit',
+            'show' => 'Show',
         ],
         'members' => [
             'index' => 'Members',

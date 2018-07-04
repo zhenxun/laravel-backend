@@ -32,13 +32,22 @@ class NewsController extends BackendController
         $route = URL::route('admin.news.store');
         $number_news = $this->news->count();
         $attachments = collect($this->getAllAttachment())->forPage(1,5);
-        $number_news = $this->news->count();
+        $number_news = ($this->news->count() != 0)? ($this->news->count() + 1 ):1;
         return view('backend.news.create', compact('route', 'attachments', 'number_news'));
     }
 
     public function edit($id){
         $route = URL::route('admin.news.update', $id);
-        return view('backend.news.edit', compact('route'));
+        $news = $this->news->where('id', $id)->firstOrFail();
+        $content = html_entity_decode($news->content,ENT_HTML5,'UTF-8');
+        $number_news = $this->news->count();
+        return view('backend.news.edit', compact('route', 'news', 'content' ,'number_news'));
+    }
+
+    public function show($id){
+        $news = $this->news->where('id', $id)->firstOrFail();
+        $content = html_entity_decode($news->content,ENT_HTML5,'UTF-8');
+        return view('backend.news.show', compact('news', 'content'));
     }
 
     public function store(NewsStoreRequest $request){
@@ -54,18 +63,58 @@ class NewsController extends BackendController
         $save = $this->news->create($basket);
 
         if($save){
-            return Redirect::route('admin.news.index')->with('success', '儲存成功');
+            return Redirect::route('admin.news.index')->with('success', trans('messages.success'));
         }else{
-            return Redirect::route('admin.news.index')->with('error', '儲存失敗');
+            return Redirect::route('admin.news.index')->with('error', trans('messages.failed'));
         }
 
     }
 
-    public function update(NewsUpdateRequest $request){
+    public function update(NewsUpdateRequest $request, $id){
+
+        $old = $this->news->find($id);
+        $change = $this->news->where('rank', $request->input('rank'))->first();
+
+        $status = ($request->input('status'))? true:false;
+
+        $replacement_status = array('status' => $status);
+        $content = htmlentities($request->input('content'),ENT_HTML5,'UTF-8');
+        $replacement_content = array('content' => $content);
+
+        $basket = array_replace($request->except('_token', '_method' ,'files'), $replacement_status);
+        $basket = array_replace($basket, $replacement_content);
+        
+        if($old->rank != $request->input('rank')){
+            $update_rank = $this->news->where('id', $change->id)->update([
+                'rank' => $old->rank,
+            ]);
+        }
+
+        $update = $this->news->where('id', $id)->update($basket);
+
+        if($update){
+            return Redirect::route('admin.news.index')->with('success', trans('messages.success'));
+        }else{
+            return Redirect::route('admin.news.index')->with('error', trans('messages.failed'));
+        }
 
     }
 
-    public function destroy(){
+    public function destroy($id){
+
+        $if_news_exist = $this->news->where('id', $id)->exists();
+
+        if($if_news_exist){
+            $delete = $this->news->where('id', $id)->delete();
+        }else{
+            $delete = false;
+        }
+
+        if($delete){
+            return Redirect::route('admin.news.index')->with('success', trans('messages.success-del'));
+        }else{
+            return Redirect::route('admin.news.index')->with('error', trans('messages.failed-del'));
+        }
 
     }
 

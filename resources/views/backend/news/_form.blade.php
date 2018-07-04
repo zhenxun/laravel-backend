@@ -1,5 +1,9 @@
 {{ Form::open(array('url' => $route)) }}
 
+      @if(isset($news))
+        {{ method_field('put') }}
+      @endif
+
       @component('layouts.backend.components.form_header_box')
         @slot('open_attachment') true @endslot
         @slot('attachment') {{ route('admin.news.index') }} @endslot
@@ -8,18 +12,37 @@
 
     <div class="form-group">
       <label for="title"><h4>標題:</h4></label>
-      {{ Form::input('text', 'title', null, ['class'=> 'form-control', 'placeholder' => '最新消息標題']) }}
+      @if(!empty($news->title))
+        @php($title = $news->title)
+      @else
+        @php($title = old('title'))
+      @endif
+      {{ Form::input('text', 'title', $title, ['class'=> 'form-control', 'placeholder' => '最新消息標題']) }}
     </div>
     <div class="form-group">
       <label><h4>內容:</h4></label>
-      <textarea id="summernote" name="content"></textarea>
+      <textarea id="summernote" name="content">
+        @if(!empty($content))
+          {{ $content }}
+        @endif
+      </textarea>
     </div>
     <div class="form-group">
       <label>排序:</label>
-      {{ Form::selectRange('rank', 1, ($number_news + 1), null, ['class' => 'form-control']) }}
+      @if(!empty($news->rank))
+        @php($rank = $news->rank)
+      @else
+        @php($rank = old('rank'))
+      @endif
+      {{ Form::selectRange('rank', 1, $number_news, $rank, ['class' => 'form-control']) }}
     </div>
     <div class="form-group form-check">
-      {{ Form::checkbox('status', 1, true, ['class' => 'form-check-input']) }}
+      @if(!empty($news->status))
+        @php($status = ($news->status == '1')? true:false)
+      @else
+        @php($status = old('status'))
+      @endif      
+      {{ Form::checkbox('status', 1, $status, ['class' => 'form-check-input']) }}
       <label class="form-check-label" for="exampleCheck1">發布?</label>
     </div>
 {{ Form::close() }}
