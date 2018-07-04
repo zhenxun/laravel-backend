@@ -6,7 +6,7 @@
 </div> --}}
 
 <nav class="navbar navbar-expand-lg backend-top-navbar">
-    <a class="navbar-brand" href="#">
+    <a class="navbar-brand" href="{{ route('admin.dashboard') }}">
         <img src="{{ asset('images/logo.png') }}" width="50" height="50" alt="">
     </a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
