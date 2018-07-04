@@ -1,5 +1,5 @@
 <div class="p-2 mb-3 action-box">
-    <a href="{{ $url }}">
+    <a href="{{ $url }}" {{ (isset($javascript))? $javascript:'' }}>
         <div class="grid-container">
             <div class="icon">
                 <span>
