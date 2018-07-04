@@ -37,7 +37,8 @@ class MembersController extends BackendController
 
     public function edit($id){
         $route = URL::route('admin.members.update', $id);
-        return view('backend.members.edit', compact('route'));
+        $member = $this->members->find($id);
+        return view('backend.members.edit', compact('route', 'member'));
     }  
 
     public function store(MembersStoreRequest $request){

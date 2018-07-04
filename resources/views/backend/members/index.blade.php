@@ -33,7 +33,7 @@
                                     <td class="datatable-editbar">
                                         <div class="d-flex justify-content-center flex-nowrap">
                                             <div class="mr-3">
-                                                <a href="" title="編輯">
+                                                <a href="{{ route('admin.members.edit', $member->id) }}" title="編輯">
                                                     <i class="fa fa-pencil"></i>
                                                 </a>
                                             </div>
