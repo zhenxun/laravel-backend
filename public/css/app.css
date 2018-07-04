@@ -13889,6 +13889,14 @@ body {
   }
 }
 
+@media (max-width: 767.98px) {
+  .bootstrap-grid > div {
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+  }
+}
+
 .action-box > a {
   letter-spacing: 2px;
   font-size: 16px;

@@ -1,3 +1,9 @@
+.bootstrap-grid > div{
+    @include media-breakpoint-down(sm){
+        justify-content: center;
+    }
+}
+
 .action-box > a{
     letter-spacing: 2px;
     font-size: 16px;
