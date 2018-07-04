@@ -25,6 +25,16 @@
                 {{ trans('dashboard.members') }}
             @endcomponent
 
+            @component('layouts.backend.components.action_box')
+                @slot('icon') fa-sign-out @endslot
+                @slot('url') {{ route('admin.logout') }} @endslot
+                @slot('javascript') onclick="event.preventDefault(); document.getElementById('logout-form').submit();"  @endslot
+                {{ trans('dashboard.logout') }}
+                <form id="logout-form" action="{{ route('admin.logout') }}" method="POST" style="display: none;">
+                    @csrf
+                </form>
+            @endcomponent
+
         </div>
     </section>
 
