@@ -9,6 +9,8 @@
                 @include('layouts.backend.components.alert.alert')
 
                 @component('layouts.backend.components.index_header')
+                  @slot('create') true @endslot
+                  @slot('edit') false @endslot
                   @slot('url_create') {{ route('admin.users.create') }} @endslot
                   @slot('url_back') {{ route('admin.dashboard') }} @endslot
                 @endcomponent
