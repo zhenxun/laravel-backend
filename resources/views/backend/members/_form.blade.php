@@ -14,6 +14,7 @@
         {{ trans('global.buttons.import') }}
         </button>
     {{ Form::close() }}
+    <p class="mt-2"><a href="{{ Storage::url('csv/csv_example.csv') }}" target="_blank"> Download Example CSV </a></p>
 @endif
 <hr>
 
