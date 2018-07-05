@@ -80,6 +80,7 @@ class MembersController extends BackendController
 
         $csv_array = $this->csvToArray($path);
 
+
         for ($i=0; $i < count($csv_array) ; $i++) { 
             
             $consent = ($csv_array[$i]['consent'] == "Y")? true:false;
@@ -91,14 +92,18 @@ class MembersController extends BackendController
                 $gender = 'other';
             }
             $recive_adv = ($csv_array[$i]['consent'] == "Y")? true:false;
-            $joining_date = Carbon::parse($csv_array[$i]['joining_date'])->format('Y-m-d');
+            $joiningDate = strtotime($csv_array[$i]['joining_date']);
+            $joining_date = date("Y-m-d", $joiningDate);
+            $cname = mb_convert_encoding($csv_array[$i]['cname'], "utf-8");
 
+            $replacement_cname = array('cname' => $cname);
             $replacement_consent = array('consent' => $consent);
             $replacement_gender = array('gender' => $gender);
             $replacement_recive_adv = array('recive_adv' => $recive_adv);
             $replacement_joining_date = array('joining_date' => $joining_date);
             
             $basket = array_replace($csv_array[$i], $replacement_consent);
+            $basket = array_replace($basket, $replacement_cname);
             $basket = array_replace($basket, $replacement_gender);
             $basket = array_replace($basket, $replacement_recive_adv);
             $basket = array_replace($basket, $replacement_joining_date); 
