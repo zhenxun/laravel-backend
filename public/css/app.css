@@ -13855,11 +13855,11 @@ body {
 }
 
 .page-header-breadcrumb-item > a {
-  color: white;
+  color: white !important;
 }
 
 .page-header-breadcrumb-item > a:hover {
-  text-decoration: none;
+  text-decoration: none !important;
 }
 
 .page-header-input-search {
