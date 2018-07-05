@@ -13854,6 +13854,14 @@ body {
   font-weight: 500;
 }
 
+.page-header-breadcrumb-item > a {
+  color: white;
+}
+
+.page-header-breadcrumb-item > a:hover {
+  text-decoration: none;
+}
+
 .page-header-input-search {
   background-color: rgba(32, 178, 170, 0.2) !important;
   color: white !important;
