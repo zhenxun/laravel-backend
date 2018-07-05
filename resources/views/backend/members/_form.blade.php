@@ -103,6 +103,9 @@
             @case('D')
                 @php($age_group = array(false, false, false, true))
                 @break
+            @default
+                @php($age_group = array(false, false, false, false))
+                @break               
         @endswitch
       @else
         @php($age_group = array(true, false, false, false))
