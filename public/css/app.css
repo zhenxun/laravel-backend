@@ -13854,11 +13854,11 @@ body {
   font-weight: 500;
 }
 
-.page-header-breadcrumb-item > a {
+.page-header-breadcrumb-item-home {
   color: white !important;
 }
 
-.page-header-breadcrumb-item > a:hover {
+.page-header-breadcrumb-item-home:hover {
   text-decoration: none !important;
 }
 
