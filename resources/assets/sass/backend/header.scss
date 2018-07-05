@@ -43,6 +43,15 @@
          color: salmon !important;
          font-weight: 500;
        }
+
+        & > a {
+          color:white;
+        }
+
+        & > a:hover{
+          text-decoration: none;
+        }
+
     }
 
   }

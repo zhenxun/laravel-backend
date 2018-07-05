@@ -8,7 +8,11 @@
                         
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb page-header-breadcrumb">
-                <li class="breadcrumb-item page-header-breadcrumb-item " aria-current="page">{{ trans('header.breadcrumb.home') }}</li>
+                <li class="breadcrumb-item page-header-breadcrumb-item " aria-current="page">
+                    <a href="{{ route('admin.dashboard') }}">
+                    {{ trans('header.breadcrumb.home') }}
+                    </a>
+                </li>
 
                   <li class="breadcrumb-item page-header-breadcrumb-item{{ (config('global.method') == 'index')? '-active':'' }}" aria-current="page">
                       @if(config('global.method') == 'index')
