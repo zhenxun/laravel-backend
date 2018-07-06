@@ -44,12 +44,12 @@
          font-weight: 500;
        }
 
-        & > a {
-          color:white;
+        &-home {
+          color:white !important;
         }
 
-        & > a:hover{
-          text-decoration: none;
+        &-home:hover{
+          text-decoration: none !important;
         }
 
     }

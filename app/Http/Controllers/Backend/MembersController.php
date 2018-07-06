@@ -9,10 +9,13 @@ use Illuminate\Support\Facades\URL;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
+use Maatwebsite\Excel\Facades\Excel;
 use App\Models\Members;
 use App\Http\Requests\Backend\CsvStoreRequest;
 use App\Http\Requests\Backend\MembersStoreRequest;
 use App\Http\Requests\Backend\MembersUpdateRequest;
+use App\Exports\MembersExport;
+
 
 class MembersController extends BackendController
 {
@@ -27,6 +30,11 @@ class MembersController extends BackendController
 
     public function index(){
         $members = $this->members->orderBy('joining_date', 'desc')->get();
+        $exists = Storage::disk('public')->exists('excel/members.xlsx');
+        if($exists){
+            Storage::delete('excel/members.xlsx');
+        }
+        $export = Excel::store(new MembersExport, 'excel/members.xlsx', 'public');
         return view('backend.members.index', compact('members'));
     }
 
@@ -80,6 +88,7 @@ class MembersController extends BackendController
 
         $csv_array = $this->csvToArray($path);
 
+
         for ($i=0; $i < count($csv_array) ; $i++) { 
             
             $consent = ($csv_array[$i]['consent'] == "Y")? true:false;
@@ -91,14 +100,18 @@ class MembersController extends BackendController
                 $gender = 'other';
             }
             $recive_adv = ($csv_array[$i]['consent'] == "Y")? true:false;
-            $joining_date = Carbon::parse($csv_array[$i]['joining_date'])->format('Y-m-d');
+            $joiningDate = strtotime($csv_array[$i]['joining_date']);
+            $joining_date = date("Y-m-d", $joiningDate);
+            $cname = mb_convert_encoding($csv_array[$i]['cname'], "utf-8");
 
+            $replacement_cname = array('cname' => $cname);
             $replacement_consent = array('consent' => $consent);
             $replacement_gender = array('gender' => $gender);
             $replacement_recive_adv = array('recive_adv' => $recive_adv);
             $replacement_joining_date = array('joining_date' => $joining_date);
             
             $basket = array_replace($csv_array[$i], $replacement_consent);
+            $basket = array_replace($basket, $replacement_cname);
             $basket = array_replace($basket, $replacement_gender);
             $basket = array_replace($basket, $replacement_recive_adv);
             $basket = array_replace($basket, $replacement_joining_date); 

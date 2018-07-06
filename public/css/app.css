@@ -13854,12 +13854,12 @@ body {
   font-weight: 500;
 }
 
-.page-header-breadcrumb-item > a {
-  color: white;
+.page-header-breadcrumb-item-home {
+  color: white !important;
 }
 
-.page-header-breadcrumb-item > a:hover {
-  text-decoration: none;
+.page-header-breadcrumb-item-home:hover {
+  text-decoration: none !important;
 }
 
 .page-header-input-search {

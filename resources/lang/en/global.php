@@ -9,6 +9,7 @@ return[
 
   'buttons' => [
       'import' => 'Import',
+      'download-excel' => 'Download Excel'
   ]
 
 ];

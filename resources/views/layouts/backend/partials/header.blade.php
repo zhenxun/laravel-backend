@@ -9,7 +9,7 @@
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb page-header-breadcrumb">
                 <li class="breadcrumb-item page-header-breadcrumb-item " aria-current="page">
-                    <a href="{{ route('admin.dashboard') }}">
+                    <a href="{{ route('admin.dashboard') }}" class="page-header-breadcrumb-item-home">
                     {{ trans('header.breadcrumb.home') }}
                     </a>
                 </li>
