@@ -20,7 +20,7 @@
                             <tr>
                                 <th>{{ trans('datatable.members.no') }}</th>
                                 <th>{{ trans('datatable.members.name') }}</th>
-                                <th>{{ trans('datatable.members.email') }}</th>
+                                <th>{{ trans('datatable.members.contact_no') }}</th>
                                 <th>{{ trans('datatable.members.joining_date') }}</th>
                                 <th>{{ trans('datatable.members.edit') }}</th>
                             </tr>
@@ -30,7 +30,7 @@
                                 <tr>
                                     <td class="datatable-iteration">{{ $loop->iteration }}</td>
                                     <td>{{ $member->ename }}</td>
-                                    <td>{{ $member->email }}</td>
+                                    <td>{{ $member->contact_no }}</td>
                                     <td>{{ $member->joining_date }}</td>
                                     <td class="datatable-editbar">
                                         <div class="d-flex justify-content-center flex-nowrap">
@@ -58,6 +58,16 @@
                             @endforeach
                         </tbody>
                 </table>
+
+
+                <div class="d-flex flex-row-reverse align-items-center mt-4">
+                    <div class="d-flex flex-row p-2 align-self-center">
+                       <a href="{{ asset('storage/excel/members.xlsx') }}"> 
+                            <img src="{{ asset('images/extension_logo/xlsx.png') }}" class="mb-1" style="width:25px; height:25px;text-decoration: none;">
+                            <span>{{ trans('global.buttons.download-excel') }}</span> 
+                        </a>
+                    </div>
+                </div>
                 
 
             </div>

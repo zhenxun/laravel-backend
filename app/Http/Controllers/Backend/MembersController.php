@@ -9,10 +9,13 @@ use Illuminate\Support\Facades\URL;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
+use Maatwebsite\Excel\Facades\Excel;
 use App\Models\Members;
 use App\Http\Requests\Backend\CsvStoreRequest;
 use App\Http\Requests\Backend\MembersStoreRequest;
 use App\Http\Requests\Backend\MembersUpdateRequest;
+use App\Exports\MembersExport;
+
 
 class MembersController extends BackendController
 {
@@ -27,6 +30,11 @@ class MembersController extends BackendController
 
     public function index(){
         $members = $this->members->orderBy('joining_date', 'desc')->get();
+        $exists = Storage::disk('public')->exists('excel/members.xlsx');
+        if($exists){
+            Storage::delete('excel/members.xlsx');
+        }
+        $export = Excel::store(new MembersExport, 'excel/members.xlsx', 'public');
         return view('backend.members.index', compact('members'));
     }
 
