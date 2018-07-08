@@ -10,7 +10,7 @@
         <input type="file" name="csv" class="form-control" required>
         </div>
         <button type="submit" class="btn btn-primary mb-2">
-        <i class="fa fa-cloud-upload" aria-hidden="true"></i> &nbsp; 
+        <i class="fa fa-cloud-upload" aria-hidden="true"></i> &nbsp;
         {{ trans('global.buttons.import') }}
         </button>
     {{ Form::close() }}
@@ -31,25 +31,25 @@
 
       <div class="form-group">
         <label for="ename">{{ trans('form.members.ename.label') }}</label>
-        <input type="text" 
-                class="form-control" id="ename" 
+        <input type="text"
+                class="form-control" id="ename"
                 name="ename" placeholder="{{ trans('form.members.ename.placeholder') }}"
                 value="{{ $member->ename or old('ename') }}">
       </div>
 
       <div class="form-group">
           <label for="cname">{{ trans('form.members.cname.label') }}</label>
-          <input type="text" 
-                class="form-control" id="cname" 
-                name="cname" placeholder="{{ trans('form.members.cname.placeholder') }}" 
+          <input type="text"
+                class="form-control" id="cname"
+                name="cname" placeholder="{{ trans('form.members.cname.placeholder') }}"
                 value="{{ $member->cname or old('cname') }}">
       </div>
 
       <div class="form-group">
           <label for="email">{{ trans('form.members.email.label') }}</label>
-          <input type="email" 
-                class="form-control" id="email" 
-                name="email" placeholder="{{ trans('form.members.email.placeholder') }}" 
+          <input type="email"
+                class="form-control" id="email"
+                name="email" placeholder="{{ trans('form.members.email.placeholder') }}"
                 value="{{ $member->email or old('email') }}">
       </div>
 
@@ -105,7 +105,7 @@
                 @break
             @default
                 @php($age_group = array(false, false, false, false))
-                @break               
+                @break
         @endswitch
       @else
         @php($age_group = array(true, false, false, false))
@@ -130,25 +130,25 @@
 
       <div class="form-group mt-4">
           <label for="contact_number">{{ trans('form.members.contact_number.label') }}</label>
-          <input type="text" 
-                class="form-control" id="contact_number" 
+          <input type="text"
+                class="form-control" id="contact_number"
                 name="contact_no" placeholder="{{ trans('form.members.contact_number.placeholder') }}"
-                value="{{ $member->contact_number or old('contact_number') }}">
+                value="{{ $member->contact_no or old('contact_number') }}">
       </div>
-      
+
       <div class="form-group mt-4">
           <label for="joining_date">{{ trans('form.members.joining_date.label') }}</label>
-          <input type="text" 
-                class="form-control" id="joining_date" 
+          <input type="text"
+                class="form-control" id="joining_date"
                 name="joining_date" placeholder="{{ trans('form.members.joining_date.placeholder') }}"
                 value="{{ $member->joining_date or old('joining_date') }}">
       </div>
 
         <div class="form-group mt-4">
             <label for="remarks">{{ trans('form.members.remarks.label') }}</label>
-            <input type="text" 
-                    class="form-control" id="remarks" 
-                    name="remarks" placeholder="{{ trans('form.members.remarks.placeholder') }}" 
+            <input type="text"
+                    class="form-control" id="remarks"
+                    name="remarks" placeholder="{{ trans('form.members.remarks.placeholder') }}"
                     value="{{ $member->remarks or old('remarks') }}">
         </div>
 
@@ -170,7 +170,7 @@
             {{ trans('form.members.sms_email.agree') }} ?
           </label>
       </div>
-      
+
       <div class="form-group mt-4 mb-0">
           <label for="consent">{{ trans('form.members.consent.label') }}</label>
       </div>
@@ -188,6 +188,6 @@
           <label class="form-check-label" for="consent">
             {{ trans('form.members.consent.agree') }} ?
           </label>
-      </div> 
+      </div>
 
   {{ Form::close() }}
